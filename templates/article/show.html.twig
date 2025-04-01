@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	{% if article.imageFilename %}
+		<img class="article-banner" src="{{ asset('uploads/' ~ article.imageFilename) }}" alt="{{ article.title }}">
+	{% endif %}
+
+	<div class="article-show-container">
+		<h1>{{ article.title }}</h1>
+
+		<p class="publication-date">
+			Published
+			{{ article.publicationDate ? article.publicationDate|date('d/m/Y') : 'N/A' }}
+		</p>
+
+		<div class="article-content">
+			{{ article.content|raw }}
+		</div>
+
+		{% if is_granted('ROLE_ADMIN') %}
+			<a href="{{ path('app_article_edit', { id: article.id }) }}" class="btn btn-primary">
+				Edit
+			</a>
+		{% endif %}
+
+	</div>
+
+{% endblock %}

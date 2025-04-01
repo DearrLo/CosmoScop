@@ -1,0 +1,46 @@
+<div class="admin-section">
+  <h2>List of actualities</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for actuality in actualities %}
+        <tr>
+          <td>{{ actuality.id }}</td>
+          <td>{{ actuality.title }}</td>
+          <td>
+            {{ actuality.content|length > 100 
+              ? actuality.content[:100] ~ '...'
+              : actuality.content }}
+          </td>
+          <td>{{ actuality.publicationDate|date('Y-m-d') }}</td>
+          <td class="article-actions">
+            <a href="{{ path('app_actuality_show', { id: actuality.id }) }}" class="btn btn-small">See</a>
+            <a href="{{ path('app_actuality_edit', { id: actuality.id }) }}" class="btn btn-small">Edit</a>
+            <form method="post"
+                  action="{{ path('app_actuality_delete', { id: actuality.id }) }}"
+                  style="display:inline-block;"
+                  onsubmit="return confirm('Are you sure you want to delete this item?');">
+              <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ actuality.id) }}">
+              <button class="btn btn-small danger">Delete</button>
+            </form>
+          </td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="5">No actuality available</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+    <a href="{{ path('app_actuality_new') }}" class="btn">Add an actuality</a>
+  </div>
+</div>

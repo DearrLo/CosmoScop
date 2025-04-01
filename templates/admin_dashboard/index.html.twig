@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - Cosmoscop{% endblock %}
+
+{% block body %}
+    <h1 class="h1-dashboard">Administrator Dashboard</h1>
+
+    {% include 'member/index.html.twig' %}
+    {% include 'article/index.html.twig' %}
+    {% include 'actuality/index.html.twig' %}
+{% endblock %}

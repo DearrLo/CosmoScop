@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CosmoScop — Home Page{% endblock %}
+
+{% block body %}
+
+    <main class="main-container">
+
+        <!-- Section anim avec three js (à importer) -->
+        <section class="animation-container">
+            <div class="animation-box">
+            </div>
+        </section>
+
+        <!-- SI USER est connecté -->
+        {% if app.user %}
+        <section class="recent-articles">
+            <h2>New articles :</h2>
+
+            <div class="articles-list">
+                {% for actuality in actualities %}
+                    <div class="article-card">
+                        <h3>{{ actuality.title }}</h3>
+                        <p>{{ actuality.content|slice(0, 100) }}...</p>
+                         <a href="{{ path('app_actuality_show', { id: actuality.id }) }}">Read more</a>
+                    </div>
+
+                {% else %}
+                    <p>Sorry, we didn't find any new actuality</p>
+                {% endfor %}
+            </div>
+
+            <a href="{{ path('app_article_index') }}" class="btn">See more...</a>
+        </section>
+        {% endif %}
+    </main>
+{% endblock %}

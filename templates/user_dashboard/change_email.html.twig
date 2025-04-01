@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Update my email{% endblock %}
+
+{% block body %}
+<main class="main">
+  <div class="form-container">
+    <h1>Update my email</h1>
+
+    {{ form_start(emailForm) }}
+      <div>
+        {{ form_label(emailForm.mail) }}
+        {{ form_widget(emailForm.mail, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_errors(emailForm.mail) }}
+      </div>
+
+      <button type="submit" class="btn">Update</button>
+    {{ form_end(emailForm) }}
+    
+    <a href="{{ path('app_user_dashboard') }}" class="btn transparent" style="margin-top: 20px;">Back to my profile</a>
+  </div>
+</main>
+{% endblock %}

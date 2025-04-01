@@ -1,0 +1,41 @@
+{% block body %}
+
+  {{ form_start(form, {'attr': {'class': 'form-container'}}) }}
+
+    {# Titre #}
+    {{ form_row(form.title, {
+      'attr': {
+        'class': 'form-control',
+        'placeholder': 'Place title here'
+      }
+    }) }}
+
+    {# Date #}
+    {{ form_row(form.publicationDate, {
+      'attr': {
+        'class': 'form-control'
+      }
+    }) }}
+
+    {# Image #}
+    {{ form_row(form.imageFile, {
+      'attr': {
+        'class': 'form-control'
+      }
+    }) }}
+
+    {# Content #}
+    {{ form_row(form.content, {
+      'attr': {
+        'class': 'form-control content-field', 
+        'placeholder': 'Write your article here',
+        'rows': 10
+      }
+    }) }}
+
+    <button type="submit" class="btn btn-primary">
+      Save
+    </button>
+
+  {{ form_end(form) }}
+{% endblock %}

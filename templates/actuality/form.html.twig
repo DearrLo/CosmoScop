@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  {{ form_start(form, {'attr': {'class': 'form-container'}}) }}
+
+    {{ form_row(form.title, {
+      'attr': {
+        'class': 'form-control',
+        'placeholder': 'Title'
+      }
+    }) }}
+
+    {{ form_row(form.publicationDate, {
+      'attr': {
+        'class': 'form-control'
+      }
+    }) }}
+
+    {{ form_row(form.imageFilename, {
+      'attr': {
+        'class': 'form-control'
+      }
+    }) }}
+
+    {{ form_row(form.content, {
+      'attr': {
+        'class': 'form-control',
+        'placeholder': 'Content',
+        'rows': 10
+      }
+    }) }}
+
+    <button type="submit" class="btn btn-primary">Save</button>
+
+  {{ form_end(form) }}
+{% endblock %}

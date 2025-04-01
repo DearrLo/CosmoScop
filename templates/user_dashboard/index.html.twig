@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+<main class="main">
+
+  {# 🧍 Bloc profil utilisateur #}
+  <div class="user-dashboard dashboard-top">
+
+    <div class="dashboard-left">
+      <div class="user-info-section">
+        <h2>Name</h2>
+        <p>{{ user.name }}</p>
+      </div>
+
+      <div class="user-info-section">
+        <h2>Mail</h2>
+        <p>{{ user.mail }}</p>
+        <a href="{{ path('app_user_change_email') }}" class="btn">Update my mail</a>
+      </div>
+
+      <div class="user-info-section">
+        <h2>Password</h2>
+        <p>••••••••••</p>
+        <a href="{{ path('app_user_change_password') }}" class="btn">Update my password</a>
+      </div>
+    </div>
+
+    <div class="dashboard-right">
+      <img 
+        src="{{ user.picture ? asset('profile_pictures/' ~ user.picture) : asset('images/default-avatar.png') }}" 
+        class="profile-picture"
+        alt="Profile Picture"
+      >
+      <div class="username">{{ user.name }}</div>
+
+      <form method="post" action="{{ path('app_user_upload_picture') }}" enctype="multipart/form-data">
+        <input type="file" name="profile_picture" id="profile_picture" accept="image/*" class="file-input" onchange="this.form.submit();" style="display: none;">
+        <button type="button" class="btn upload-btn" onclick="document.getElementById('profile_picture').click();">Edit</button>
+      </form>
+    </div>
+
+  </div>
+
+  {# ⭐ Bloc favoris bien séparé en dessous #}
+  <div class="user-dashboard dashboard-bottom">
+    <h2 class="favorites-title">My favorite list :</h2>
+
+    {% if favorites is not empty %}
+      <table class="favorites-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for favorite in favorites %}
+            <tr>
+              <td>{{ favorite.actuality.id }}</td>
+              <td>{{ favorite.actuality.title }}</td>
+              <td>{{ favorite.actuality.description|slice(0, 50) ~ '...' }}</td>
+              <td>
+                <a href="{{ path('app_actuality_show', { id: favorite.actuality.id }) }}" class="btn small">Show details</a>
+                <form method="post" action="{{ path('app_favorite_toggle', { id: favorite.actuality.id }) }}" style="display: inline;">
+                  <input type="hidden" name="_token" value="{{ csrf_token('toggle' ~ favorite.actuality.id) }}">
+                  <button class="btn small" title="Remove from favorites">🗑</button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p class="no-favorites">You have no favorite items yet.</p>
+    {% endif %}
+  </div>
+
+</main>
+{% endblock %}

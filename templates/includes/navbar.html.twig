@@ -1,0 +1,74 @@
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <input type="checkbox" name="check" id="check">
+      
+      <div class="logo-container">
+        <a href="{{ path('home') }}" class="logo">
+          <h3>COSMO<span>SCOP</span></h3>
+        </a>
+      </div>
+
+      <div class="hamburger-menu-container">
+        <div class="hamburger-menu">
+          <div></div>
+        </div>
+      </div>
+
+      <div class="nav-btn">
+        <div class="nav-links">
+          <ul>
+            <li class="nav-link" style="--i: .85s">
+              <a href="{{ path('app_article_index') }}">Space Prelude</a>
+              <ul class="dropdown">
+                <li class="dropdown-link"><a href="{{ path('app_article_topic', { topic: 'introduction' }) }}">Introduction</a></li>
+                <li class="dropdown-link"><a href="{{ path('app_article_topic', { topic: 'key-moments' }) }}">Key Moments in Space Discovery</a></li>
+                <li class="dropdown-link"><a href="{{ path('app_article_topic', { topic: 'pioneers' }) }}">Pioneers of Space Exploration</a></li>
+                <li class="dropdown-link"><a href="{{ path('app_article_topic', { topic: 'economic-benefits' }) }}">Economic & Industrial Benefits</a></li>
+                <li class="dropdown-arrow"><div class="arrow"></div></li>
+              </ul>
+            </li>
+
+            <li class="nav-link" style="--i: 1.1s">
+              <a href="{{ path('app_future_mission') }}">Future Missions</a>
+              <ul class="dropdown">
+                <li class="dropdown-link"><a href="#">Link 1</a></li>
+                <li class="dropdown-link"><a href="#">Link 2</a></li>
+                <li class="dropdown-link"><a href="#">Link 3</a></li>
+                <li class="dropdown-link"><a href="#">Link 4</a></li>
+                <li class="dropdown-arrow"><div class="arrow"></div></li>
+              </ul>
+            </li>
+            
+            <li class="nav-link" style="--i: 1.35s">
+              <a href="{{ path('about_us') }}">About us</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="log-sign" style="--i: 1.8s">
+          {% if app.user %}
+            <div class="user-menu">
+              <a href="{{ path('app_user_dashboard') }}" class="user-icon">
+                <i class="fas fa-user"></i> 
+              </a>
+              {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('app_admin_dashboard') }}" class="admin-icon" title="Admin Dashboard">
+                  <i class="fas fa-screwdriver-wrench"></i>
+                </a>
+              {% endif %}
+              <a href="{{ path('app_logout') }}" class="btn solid">Sign out</a>
+            </div>
+          {% else %}
+            <a href="{{ path('app_login') }}" class="btn transparent">Log in</a>
+            <a href="{{ path('app_register') }}" class="btn solid">Sign up</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </header>
+</body>

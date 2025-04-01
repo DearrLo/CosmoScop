@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Favoris{% endblock %}
+
+{% block body %}
+    <h1>Mes Favoris</h1>
+
+    {% if favorites is empty %}
+        <p>Aucun article en favori pour le moment.</p>
+    {% else %}
+        <ul>
+            {% for favorite in favorites %}
+                <li>
+                    <a href="{{ path('app_article_show', {id: favorite.article.id}) }}">
+                        {{ favorite.article.title }}
+                    </a>
+                    <form action="{{ path('app_favorite_remove', {id: favorite.id}) }}" method="post">
+                        <button type="submit">Retirer des favoris</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ article is defined ? 'Edit' : 'Create' }}
+	an article
+{% endblock %}
+
+{% block body %}
+	<h1>{{ article is defined ? 'Edit' : 'Create' }}
+		an article</h1>
+
+	{% include 'article/form.html.twig' %}
+{% endblock %}

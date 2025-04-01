@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Future Missions{% endblock %}
+
+{% block body %}
+    <h1>Upcoming Missions</h1>
+    <ul>
+        {% for mission in missions %}
+            <li>
+                <strong>{{ mission.title }}</strong> - {{ mission.agency }}<br>
+                Status: {{ mission.status }} | Launch Date: {{ mission.launchDate|date('d/m/Y') }}<br>
+                {{ mission.description }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+

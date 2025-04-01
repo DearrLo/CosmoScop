@@ -1,0 +1,33 @@
+<div class="admin-section members">
+
+    <h2>List of the members</h2>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Marked favorite</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in members %}
+                <tr>
+                    <td>{{ member.id }}</td>
+                    <td>{{ member.getMail() }}</td>
+                    <td>{{ member.getName() }}</td>
+                    <td>{{ member.getFavorites|length }}</td>
+                    <td>
+                        <a href="#" class="btn">See more</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">No member found</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

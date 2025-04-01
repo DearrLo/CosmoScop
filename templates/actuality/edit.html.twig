@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  {{ actuality is defined ? 'Edit' : 'Create' }} an actuality
+{% endblock %}
+
+{% block body %}
+  <h1>{{ actuality is defined ? 'Edit' : 'Create' }} an actuality</h1>
+
+  {% include 'actuality/form.html.t%wig' %}
+{% endblock %}
