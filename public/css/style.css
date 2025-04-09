@@ -8,7 +8,6 @@ body {
   background-size: cover;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
   color: #fff6ff;
 }
 
@@ -50,13 +49,6 @@ header {
   height: 4rem;
   width: 100%;
   z-index: 1000;
-}
-
-section {
-  position: relative;
-  height: calc(100vh - 3rem);
-  width: 100%;
-  overflow: hidden;
 }
 
 .overlay {
@@ -115,15 +107,18 @@ section {
 }
 
 .btn {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0.5rem 1.3rem;
   font-size: 0.8rem;
   border: 2px solid var(--clr-light);
   border-radius: 2rem;
   line-height: 1;
-  margin: 0 0.2rem;
+  margin: 1.5rem auto 0 auto;
   transition: 0.3s;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .btn.solid,
@@ -400,6 +395,15 @@ section {
   }
 }
 
+/* Partie animation three.js */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  height: auto;
+  overflow: auto;
+}
+
 /* Partie Footer */
 .footer {
   display: flex;
@@ -448,9 +452,10 @@ section {
   width: 80%;
   margin: auto;
   padding: 20px;
+  z-index: 0;
 }
 
-/* Registration / Login */
+/* Registration & Login */
 .h1-registration {
   margin-bottom: 40px;
   margin-top: -80px;
@@ -463,16 +468,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 300px;
-}
-
-.animation-box {
-  width: 300px;
-  height: 300px;
-  background-color: grey;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 400px;
 }
 
 /* Actualitées récentes */
@@ -502,15 +498,6 @@ section {
 .article-card a {
   color: #fff;
   text-decoration: underline;
-}
-
-.btn {
-  display: inline-block;
-  background-color: #333;
-  color: #fff6ff;
-  padding: 10px;
-  border-radius: 10px;
-  margin-top: 10px;
 }
 
 .btn:hover {
@@ -590,8 +577,8 @@ section {
 /* Formulaire d'édition article */
 .form-container {
   width: 650px;
-  height: 550px;
   margin: 0 auto;
+  max-width: 600px;
   background: rgba(84, 82, 82, 0.359);
   padding: 20px;
   border-radius: 8px;
@@ -622,21 +609,10 @@ section {
   z-index: 1;
 }
 
-.table {
-  margin-bottom: 50px;
-}
-
+.admin-section,
 .admin-section.members {
-  width: 100%;               
-  margin: 40px auto;        
-  padding: 20px;
-  border-radius: 10px;
-  text-align: left;
-}
-
-.admin-section {
-  width: 100%;               
-  margin: 40px auto;        
+  width: 100%;
+  margin: 40px auto;
   padding: 20px;
   border-radius: 10px;
   text-align: left;
@@ -650,8 +626,11 @@ section {
 
 .table {
   width: 100%;
+  table-layout: auto;
   border-collapse: collapse;
-  margin-bottom: 15px;
+  color: #fff6ff;
+  font-size: 1rem;
+  min-width: 600px;
 }
 
 .table th,
@@ -662,6 +641,23 @@ section {
 
 .table thead {
   background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* et le responsive du adminDashboard */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* pour un défilement fluide sur iOS */
+}
+
+/* Ajustements pour les petits écrans */
+@media (max-width: 768px) {
+  .table th,
+  .table td {
+    font-size: 0.75rem;
+    padding: 8px 10px;
+    word-break: break-word; /* évite les débordements de mots longs */
+  }
 }
 
 /* User Dashboard */
@@ -744,6 +740,125 @@ section {
 }
 
 .btn.small {
+  display: flex;
   font-size: 0.9rem;
   padding: 6px 12px;
+  justify-content: center;
+}
+
+
+/* Fenêtre modale après succès du register */
+.modal-flash {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal-content {
+  background: #101010;
+  color: #cccccc;
+  padding: 15px;
+  border-radius: 8px;
+  max-width: 90%;
+  text-align: center;
+}
+
+.modal-content button {
+  margin-top: 10px;
+  padding: 6px 14px;
+  border: none;
+  background: #1e1e1e;
+  color: #fff;
+  border-radius: 4px;
+}
+
+
+/* Partie inclusive - dyslexia */
+#toggle-dyslexia {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px 14px;
+  font-size: 14px;
+  background-color: #dad7da;
+  color: #000;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 2;
+  transition: background-color 0.3s;
+}
+
+#toggle-dyslexia:hover {
+  background-color: #ffffff;
+}
+
+body.dyslexia-mode {
+  font-family: Arial, sans-serif;
+  font-size: 1.1em;
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+  background-color: #fdfdfd;
+  color: #111;
+}
+
+body.dyslexia-mode a {
+  text-decoration: underline;
+}
+
+
+/* About me & RGPD */
+  .about-us {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 5px;
+    margin-bottom: 60px;
+    color: #fff6ff;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .about-us h1,
+.about-us h2 {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #fff6ff;
+}
+
+.about-us p {
+  margin-bottom: 15px;
+  text-align: justify;
+  padding: 10px;
+}
+
+/* Actualities index */
+.comment-form {
+  background: rgba(255, 255, 255, 0.07);
+  padding: 25px;
+  border-radius: 12px;
+  width: 90%;
+  margin: 40px auto 0;
+}
+
+.comment-form textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff6ff;
+}
+
+.comments-section {
+  width: 100%;
+  max-width: 1000px;
+  margin: 80px auto 60px auto;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  color: #fff;
 }

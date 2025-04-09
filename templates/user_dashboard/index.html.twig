@@ -3,9 +3,8 @@
 {% block title %}Profile{% endblock %}
 
 {% block body %}
-<main class="main">
+<main class="main" role="main" aria-label="User profile page">
 
-  {# 🧍 Bloc profil utilisateur #}
   <div class="user-dashboard dashboard-top">
 
     <div class="dashboard-left">
@@ -31,30 +30,30 @@
       <img 
         src="{{ user.picture ? asset('profile_pictures/' ~ user.picture) : asset('images/default-avatar.png') }}" 
         class="profile-picture"
-        alt="Profile Picture"
+        alt="User profile picture"
       >
       <div class="username">{{ user.name }}</div>
 
       <form method="post" action="{{ path('app_user_upload_picture') }}" enctype="multipart/form-data">
-        <input type="file" name="profile_picture" id="profile_picture" accept="image/*" class="file-input" onchange="this.form.submit();" style="display: none;">
+        <input type="file" name="profile_picture" id="profile_picture" accept="image/jpeg,image/png,image/webp" class="file-input" onchange="this.form.submit();" style="display: none;">
         <button type="button" class="btn upload-btn" onclick="document.getElementById('profile_picture').click();">Edit</button>
       </form>
     </div>
 
   </div>
 
-  {# ⭐ Bloc favoris bien séparé en dessous #}
   <div class="user-dashboard dashboard-bottom">
     <h2 class="favorites-title">My favorite list :</h2>
 
     {% if favorites is not empty %}
       <table class="favorites-table">
+        <caption class="visually-hidden">List of favorite articles</caption>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Actions</th>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -67,7 +66,7 @@
                 <a href="{{ path('app_actuality_show', { id: favorite.actuality.id }) }}" class="btn small">Show details</a>
                 <form method="post" action="{{ path('app_favorite_toggle', { id: favorite.actuality.id }) }}" style="display: inline;">
                   <input type="hidden" name="_token" value="{{ csrf_token('toggle' ~ favorite.actuality.id) }}">
-                  <button class="btn small" title="Remove from favorites">🗑</button>
+                  <button class="btn small" title="Remove from favorites" aria-label="Remove {{ favorite.actuality.title }} from favorites">🗑</button>
                 </form>
               </td>
             </tr>

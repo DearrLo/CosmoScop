@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Form\UpdateEmailType;
 use App\Form\ChangePasswordType;
 use App\Repository\FavoriteRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
@@ -17,13 +18,14 @@ use Symfony\Bundle\FrameworkBundle\Attribute\AsController;
 #[AsController]
 class UserDashboardController extends AbstractController
 {
+    // Tableau de bord de l'user connecté
     #[Route('/user/dashboard', name: 'app_user_dashboard')]
     public function index(FavoriteRepository $favoriteRepository): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_USER');
+        $this->denyAccessUnlessGranted('ROLE_USER'); // interdit l'accès si la personne n'est pas connectée
 
-        $user = $this->getUser();
-        $favorites = $favoriteRepository->findBy(['user' => $user]);
+        $user = $this->getUser(); // récup l'user en cours
+        $favorites = $favoriteRepository->findBy(['user' => $user]); // on récupère ses favoris
 
         return $this->render('user_dashboard/index.html.twig', [
             'user' => $user,
@@ -31,6 +33,7 @@ class UserDashboardController extends AbstractController
         ]);
     }
 
+    // Formulaire pour changer l'email
     #[Route('/user/change-email', name: 'app_user_change_email')]
     public function changeEmail(Request $request, EntityManagerInterface $em): Response
     {
@@ -41,7 +44,7 @@ class UserDashboardController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em->flush();
+            $em->flush(); // on enregistre le nouvel email
             $this->addFlash('success', 'Mail updated.');
             return $this->redirectToRoute('app_user_dashboard');
         }
@@ -51,6 +54,7 @@ class UserDashboardController extends AbstractController
         ]);
     }
 
+    // Formulaire pour changer le mdp
     #[Route('/user/change-password', name: 'app_user_change_password')]
     public function changePassword(
         Request $request,
@@ -67,12 +71,15 @@ class UserDashboardController extends AbstractController
             $currentPassword = $form->get('currentPassword')->getData();
             $newPassword = $form->get('newPassword')->getData();
 
+            // on vérifie que l'ancien mot de passe est correct
             if (!$passwordHasher->isPasswordValid($user, $currentPassword)) {
                 $form->get('currentPassword')->addError(new FormError('This is not the right password. Please try again.'));
             } else {
+                // on encode le nouveau mot de passe
                 $hashedPassword = $passwordHasher->hashPassword($user, $newPassword);
                 $user->setPassword($hashedPassword);
                 $em->flush();
+
                 $this->addFlash('success', 'Password successfully updated.');
                 return $this->redirectToRoute('app_user_dashboard');
             }
@@ -83,31 +90,73 @@ class UserDashboardController extends AbstractController
         ]);
     }
 
+    // Upload/modification de la photo de profil en .webp ONLY
     #[Route('/user/upload-picture', name: 'app_user_upload_picture', methods: ['POST'])]
     public function uploadPicture(Request $request, EntityManagerInterface $em): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
         $user = $this->getUser();
-
         $file = $request->files->get('profile_picture');
 
         if ($file) {
+
+            // On vérifie que le fichier est bien une image autorisée
             if (!in_array($file->getMimeType(), ['image/jpeg', 'image/png', 'image/webp'])) {
-                $this->addFlash('error', 'File not authorized. Only JPEG, PNG or WEBP formats are allowed.');
+                $this->addFlash('error', 'Only JPEG, PNG, or WebP images are allowed.');
                 return $this->redirectToRoute('app_user_dashboard');
             }
 
-            $filename = 'user_' . $user->getId() . '.' . $file->guessExtension();
-            $file->move($this->getParameter('profile_pictures_directory'), $filename);
+            // On crée un nom de fichier unique en .webp
+            $filename = 'user_' . $user->getId() . '.webp';
+            $outputPath = $this->getParameter('profile_pictures_directory') . '/' . $filename;
 
-            $user->setPicture($filename);
-            $em->flush();
+            // On crée une image temporaire en fonction du type original
+            $image = null;
+            switch ($file->getMimeType()) {
+                case 'image/jpeg':
+                    $image = imagecreatefromjpeg($file->getPathname());
+                    break;
+                case 'image/png':
+                    $image = imagecreatefrompng($file->getPathname());
+                    break;
+                case 'image/webp':
+                    $image = imagecreatefromwebp($file->getPathname());
+                    break;
+            }
 
-            $this->addFlash('success', 'Profile picture updated.');
+            // On convertit tout ça en .webp et on l’enregistre
+            if ($image && imagewebp($image, $outputPath, 80)) {
+                imagedestroy($image);
+
+                $user->setPicture($filename);
+                $em->flush();
+
+            } else {
+            }
         } else {
-            $this->addFlash('error', 'Error. No file selected.');
+            $this->addFlash('error', 'No file selected.');
         }
 
         return $this->redirectToRoute('app_user_dashboard');
+    }
+
+    // Vue admin pour afficher les infos d’un utilisateur spécifique
+    #[Route('/admin/user/{id}', name: 'admin_user_dashboard')]
+    public function adminView(UserRepository $userRepository, FavoriteRepository $favoriteRepository, int $id): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        $user = $userRepository->find($id);
+
+        if (!$user) {
+            throw $this->createNotFoundException('User not found.');
+        }
+
+        $favorites = $favoriteRepository->findBy(['user' => $user]);
+
+        return $this->render('user_dashboard/index.html.twig', [
+            'user' => $user,
+            'favorites' => $favorites,
+        ]);
     }
 }

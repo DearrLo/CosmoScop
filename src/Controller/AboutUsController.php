@@ -8,6 +8,8 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class AboutUsController extends AbstractController
 {
+
+    //  La route pour le abous-us
     #[Route('/about-us', name: 'about_us')]
     public function index(): Response
     {

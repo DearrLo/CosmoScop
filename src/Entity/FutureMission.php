@@ -26,6 +26,9 @@ class FutureMission
     #[ORM\Column(length: 255)]
     private ?string $agency = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $imageFilename = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,6 +79,17 @@ class FutureMission
     {
         $this->agency = $agency;
 
+        return $this;
+    }
+
+    public function getImageFilename(): ?string
+    {
+        return $this->imageFilename;
+    }
+
+    public function setImageFilename(?string $imageFilename): static
+    {
+        $this->imageFilename = $imageFilename;
         return $this;
     }
 }

@@ -13,38 +13,44 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RegistrationController extends AbstractController
 {
+    // Cette route gère la page d’inscription (GET pour afficher le formulaire, POST pour le traiter)
     #[Route('/registration', name: 'app_register', methods: ['GET', 'POST'])]
-
-    // Fonction qui gère l'inscription. Reply qui retourne la rép HTTP
     public function register(
         Request $request, 
         UserPasswordHasherInterface $passwordHasher, 
         EntityManagerInterface $entityManager
     ): Response {
-        // Crée un nouvel utilisateur
+
+        // On crée un nouvel utilisateur vide (qu'on va remplir via form)
         $user = new User();
 
-        // Crée le formulaire lié à l'entité User
+        // On génère le formulaire lié à l’objet User
         $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->handleRequest($request);
+        $form->handleRequest($request); // On gère la soumission du formulaire
 
-        // Si le formulaire est valide ET sans erreur, on continue
+        // Si le formulaire est envoyé ET qu’il est valide alors :
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // On hash le mot de passe en récupérant ce que l’utilisateur a tapé dans le champ "plainPassword"
             $user->setPassword(
                 $passwordHasher->hashPassword($user, $form->get('plainPassword')->getData())
             );
 
-            // Assigne le rôle par défaut ROLE_USER 
+            // On définit le rôle de base (ici, juste un basic user)
             $user->setRole('ROLE_USER');
 
-            // Sauvegarde l'utilisateur en bdd
+            // On enregistre le nouvel utilisateur en bdd
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // Redirection vers home page après inscription réussie
+            // Petit message flash pour dire que l’inscription a marché
+            $this->addFlash('success', 'Account created successfully');
+
+            // On redirige l’utilisateur vers la page d’accueil
             return $this->redirectToRoute('home');
         }
 
+        // Si le formulaire n’est pas soumis ou pas valide, on l’affiche
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);

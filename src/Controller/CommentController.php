@@ -8,6 +8,8 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class CommentController extends AbstractController
 {
+
+    // Route de base pour les commentaires
     #[Route('/comment', name: 'app_comment')]
     public function index(): Response
     {

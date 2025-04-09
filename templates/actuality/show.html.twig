@@ -2,60 +2,94 @@
 
 {% block body %}
 
-  {% if actuality.imageFilename %}
-    <img class="article-banner" src="{{ asset('uploads/' ~ actuality.imageFilename) }}" alt="{{ actuality.title }}">
-  {% endif %}
+	{% if actuality.imageFilename %}
+		<img class="article-banner" src="{{ asset('uploads/' ~ actuality.imageFilename) }}" alt="{{ actuality.title }}">
+	{% endif %}
 
-  <div class="article-show-container"> {#  !!Remplacer par une balise article!! #}
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-      <h1>{{ actuality.title }}</h1>
+	<article
+		class="article-show-container">
 
-      {% if is_granted('ROLE_USER') %}
-        <form method="post" action="{{ path('app_favorite_toggle', { id: actuality.id }) }}" style="display: inline;">
-          <button type="submit" class="favorite-btn" title="Add to favorites">
-            {% if actualityIsFavorite %}
+		{# Titre de l'actualité + bouton favori #}
+		<div style="display: flex; justify-content: space-between; align-items: center;">
+			<h1>{{ actuality.title }}</h1>
 
-              <!-- Étoile pleine -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="star-icon filled" viewBox="0 0 24 24" width="26" height="26">
-                <path d="M12 .587l3.668 7.431L24 9.75l-6 5.845L19.335 24 12 20.202 4.665 24 6 15.595 0 9.75l8.332-1.732z"/>
-              </svg>
-            {% else %}
-              <!-- Étoile vide -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="star-icon" viewBox="0 0 24 24" width="26" height="26">
-                <path fill="none" stroke="#FFD700" stroke-width="2" d="M12 .587l3.668 7.431L24 9.75l-6 5.845L19.335 24 12 20.202 4.665 24 6 15.595 0 9.75l8.332-1.732z"/>
-              </svg>
-            {% endif %}
-			
-          </button>
-        </form>
-      {% endif %}
-    </div>
+			{% if is_granted('ROLE_USER') %}
+				<form method="post" action="{{ path('app_favorite_toggle', { id: actuality.id }) }}" style="display: inline;">
+					<button type="submit" class="favorite-btn" title="Add to favorites" aria-label="Toggle favorite for {{ actuality.title }}">
+						{% if actualityIsFavorite %}
+							{# étoile pleine #}
+							<svg xmlns="http://www.w3.org/2000/svg" class="star-icon filled" viewbox="0 0 24 24" width="26" height="26">
+								<path d="M12 .587l3.668 7.431L24 9.75l-6 5.845L19.335 24 12 20.202 4.665 24 6 15.595 0 9.75l8.332-1.732z"/>
+							</svg>
+						{% else %}
+							{# étoile vide #}
+							<svg xmlns="http://www.w3.org/2000/svg" class="star-icon" viewbox="0 0 24 24" width="26" height="26">
+								<path fill="none" stroke="#FFD700" stroke-width="2" d="M12 .587l3.668 7.431L24 9.75l-6 5.845L19.335 24 12 20.202 4.665 24 6 15.595 0 9.75l8.332-1.732z"/>
+							</svg>
+						{% endif %}
+					</button>
+				</form>
+			{% endif %}
+		</div>
 
-    <p class="publication-date">
-      Published
-      {{ actuality.publicationDate ? actuality.publicationDate|date('d/m/Y') : 'Date inconnue' }}
-    </p>
+		{# Date de publication #}
+		<p class="publication-date">
+			Published
+			{{ actuality.publicationDate ? actuality.publicationDate|date('d/m/Y') : 'Unknown date' }}
+		</p>
 
-    <div class="article-content">
-      {{ actuality.content|raw }}
-    </div>
+		{# Contenu de l'actualité #}
+		<div class="article-content">
+			{{ actuality.content|raw }}
+		</div>
 
-    {% if is_granted('ROLE_ADMIN') %}
-      <div class="action-buttons">
-        <form method="post" action="{{ path('app_actuality_delete', { id: actuality.id }) }}" onsubmit="return confirm('Are you sure you want to delete ?');">
-          <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ actuality.id) }}">
-          <button class="btn btn-delete">Delete</button>
+		{# Boutons admin (edit / delete) #}
+		{% if is_granted('ROLE_ADMIN') %}
+			<div class="action-buttons">
+				<form method="post" action="{{ path('app_actuality_delete', { id: actuality.id }) }}" onsubmit="return confirm('Are you sure you want to delete ?');">
+					<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ actuality.id) }}">
+					<button class="btn btn-delete">Delete</button>
+					<a href="{{ path('app_actuality_edit', { id: actuality.id }) }}" class="btn btn-primary">Edit</a>
+				</form>
+			</div>
+		{% endif %}
 
-          <a href="{{ path('app_actuality_edit', { id: actuality.id }) }}" class="btn btn-primary">
-            Edit
-          </a>
-        </form>
-      </div>
-    {% endif %}
+		{# Lien retour accueil #}
+		<a href="{{ path('app_actuality_index') }}" class="back-link">← Back to Home Page</a>
 
-    <div style="margin-top: 20px;">
-      <a href="{{ path('app_actuality_index') }}" class="back-link">← Back to Home Page</a>
-    </div>
-  </div>
+	</article>
+
+	{# SECTION COMMENTAIRES #}
+	<section class="comments-section">
+		<h2>Comments</h2>
+
+		<div class="comments-list">
+			{% for comment in actuality.comments %}
+				<div class="comment-card">
+					<p>{{ comment.content }}</p>
+					<small>by
+						{{ comment.user.mail }}
+						on
+						{{ comment.createdAt|date('Y-m-d H:i') }}</small>
+				</div>
+			{% else %}
+				<p>No comments yet. Be the first to comment!</p>
+			{% endfor %}
+		</div>
+
+		{% if app.user %}
+			<div class="comment-form">
+				<h3>Leave a comment</h3>
+				{{ form_start(form) }}
+				{{ form_widget(form) }}
+				<button class="btn">Submit</button>
+				{{ form_end(form) }}
+			</div>
+		{% else %}
+			<p>
+				<em>You must be logged in to post a comment.</em>
+			</p>
+		{% endif %}
+	</section>
 
 {% endblock %}

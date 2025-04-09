@@ -1,0 +1,49 @@
+{% block body %}
+
+  {{ form_start(form, {'attr': {'class': 'form-container'}}) }}
+
+    {# Titre #}
+    {{ form_row(form.title, {
+      'attr': {
+        'class': 'form-control',
+        'placeholder': 'Place title here'
+      }
+    }) }}
+
+    {# Date de lancement #}
+    {{ form_row(form.launchDate, {
+      'attr': {
+        'class': 'form-control'
+      }
+    }) }}
+
+    {# Image #}
+    {{ form_row(form.imageFile, {
+      'attr': {
+        'class': 'form-control'
+      }
+    }) }}
+
+    {# Description #}
+    {{ form_row(form.description, {
+      'attr': {
+        'class': 'form-control content-field',
+        'placeholder': 'Describe the mission here',
+        'rows': 10
+      }
+    }) }}
+
+    {# Agence spatiale #}
+    {{ form_row(form.agency, {
+      'attr': {
+        'class': 'form-control',
+        'placeholder': 'e.g. NASA, ESA'
+      }
+    }) }}
+
+    <button type="submit" class="btn btn-primary">
+      Save
+    </button>
+
+  {{ form_end(form) }}
+{% endblock %}

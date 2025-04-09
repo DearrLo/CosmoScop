@@ -3,22 +3,29 @@
 {% block title %}Mes Favoris{% endblock %}
 
 {% block body %}
+<main id="main">
     <h1>Mes Favoris</h1>
 
     {% if favorites is empty %}
         <p>Aucun article en favori pour le moment.</p>
     {% else %}
-        <ul>
-            {% for favorite in favorites %}
-                <li>
-                    <a href="{{ path('app_article_show', {id: favorite.article.id}) }}">
-                        {{ favorite.article.title }}
-                    </a>
-                    <form action="{{ path('app_favorite_remove', {id: favorite.id}) }}" method="post">
-                        <button type="submit">Retirer des favoris</button>
-                    </form>
-                </li>
-            {% endfor %}
-        </ul>
+        <section aria-labelledby="favorites-list">
+            <h2 id="favorites-list">Liste de vos articles favoris</h2>
+            <ul>
+                {% for favorite in favorites %}
+                    <li>
+                        <a href="{{ path('app_article_show', {id: favorite.article.id}) }}">
+                            {{ favorite.article.title }}
+                        </a>
+                        <form action="{{ path('app_favorite_remove', {id: favorite.id}) }}" method="post">
+                            <button type="submit" aria-label="Retirer {{ favorite.article.title }} des favoris">
+                                Retirer des favoris
+                            </button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
     {% endif %}
+</main>
 {% endblock %}
