@@ -13,25 +13,34 @@
 		</div>
 
 		<p class="publication-date">
-			Launch Date: {{ mission.launchDate|date('d/m/Y') }}
+			Launch Date:
+			{{ mission.launchDate|date('d/m/Y') }}
 		</p>
 
 		<p class="publication-date">
-			Agency: {{ mission.agency }}
+			Agency:
+			{{ mission.agency }}
 		</p>
 
 		<div class="article-content">
 			{{ mission.description|nl2br }}
 		</div>
-
+		
+		{# Boutons admin (edit) #}
 		{% if is_granted('ROLE_ADMIN') %}
-			<div class="action-buttons">
-				<a href="{{ path('app_future_mission_edit', { id: mission.id }) }}" class="btn btn-primary">Edit</a>
+			<div class="centered-container">
+				<div class="action-buttons">
+					<a href="{{ path('app_future_mission_edit', { id: mission.id }) }}" class="btn">Edit</a>
+				</div>
 			</div>
 		{% endif %}
 
-		<a href="{{ path('app_future_mission') }}" class="back-link">← Back to Mission List</a>
+		{# Lien retour accueil #}
+		<div class="centered-container">
+			<a href="{{ path('app_actuality_index') }}" class="btn-back-home">
+				Back to Home Page
+			</a>
+		</div>
 
 	</article>
-
 {% endblock %}

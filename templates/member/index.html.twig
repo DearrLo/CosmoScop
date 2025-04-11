@@ -20,7 +20,7 @@
                         <td>{{ member.getName() }}</td>
                         <td>{{ member.getFavorites|length }}</td>
                         <td>
-                            <a href="{{ path('admin_user_dashboard', { 'id': member.id }) }}" class="btn">See more</a>
+                        <a href="{{ path('admin_user_dashboard', { 'id': member.id }) }}" class="btn-see">See more</a>
                         </td>
                     </tr>
                 {% else %}

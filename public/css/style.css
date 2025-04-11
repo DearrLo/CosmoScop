@@ -32,6 +32,7 @@ main {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  /* outline: 1px solid red; */
 }
 
 ul {
@@ -43,7 +44,7 @@ a {
 }
 
 header {
-  position: sticky;
+  position: fixed;
   top: 0px;
   background-color: var(--clr-bg-header);
   height: 4rem;
@@ -61,10 +62,11 @@ header {
 
 .container {
   max-width: 65rem;
-  padding: 0.5rem;
+  padding: 0rem;
   margin: 0 auto;
   display: flex;
   position: relative;
+  align-items: center;
 }
 
 .logo-container {
@@ -106,31 +108,77 @@ header {
   flex: 1;
 }
 
+/* Tous les bouttons  */
+.btn-see, 
 .btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem 1.3rem;
   font-size: 0.8rem;
-  border: 2px solid var(--clr-light);
-  border-radius: 2rem;
-  line-height: 1;
-  margin: 1.5rem auto 0 auto;
-  transition: 0.3s;
+  padding: 6px 12px;
+  margin-top: 15px;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  background-color: transparent;
+  color: white;
   text-transform: uppercase;
+  transition: all 0.3s ease;
+  display: inline-block;
   text-align: center;
 }
 
-.btn.solid,
-.btn.transparent:hover {
-  background-color: var(--clr-light);
-  color: var(--clr-btn);
+.btn-see:hover, 
+.btn:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
 }
 
-.btn.transparent,
-.btn.solid:hover {
+.btn-add {
+  display: inline-block;
+  margin: 2rem auto;
+  padding: 0.4rem 1.3rem;
+  font-size: 0.8rem;
+  border: 2px solid #2bb673; 
+  border-radius: 2rem;
   background-color: transparent;
-  color: var(--clr-light);
+  color: #2bb673;
+  text-transform: uppercase;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.btn-add:hover {
+  background-color: #2bb673;
+  color: #000;
+  cursor: pointer;
+}
+
+.btn-back-home {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.85rem;
+  color: #7dcfff;
+  border: 1.5px solid;
+  border-radius: 30px;
+  margin-top: 20px;
+  background-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  transition: all 0.3s ease;
+}
+
+.btn-back-home:hover {
+  background-color: #7dcfff;
+  color: black;
+  box-shadow: 0 0 20px #7dcfff;
+}
+
+.btn-delete {
+}
+
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
 }
 
 .nav-links > ul {
@@ -500,10 +548,6 @@ html, body {
   text-decoration: underline;
 }
 
-.btn:hover {
-  background-color: #0b0b0b;
-}
-
 @media (max-width: 768px) {
   .article-card {
     flex: 1 1 100%;
@@ -784,16 +828,15 @@ html, body {
   left: 20px;
   padding: 10px 14px;
   font-size: 14px;
-  background-color: #dad7da;
+  background-color: #ffffff;
   color: #000;
   border-radius: 8px;
   cursor: pointer;
   z-index: 2;
-  transition: background-color 0.3s;
 }
 
 #toggle-dyslexia:hover {
-  background-color: #ffffff;
+  background-color: #d7d5d5;
 }
 
 body.dyslexia-mode {
@@ -861,4 +904,8 @@ body.dyslexia-mode a {
   background-color: rgba(255, 255, 255, 0.04);
   border-radius: 12px;
   color: #fff;
+}
+
+.animation-container {
+margin-top: 90px;
 }

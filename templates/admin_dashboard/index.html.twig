@@ -3,9 +3,13 @@
 {% block title %}Admin - Cosmoscop{% endblock %}
 
 {% block body %}
-    <h1 class="h1-dashboard">Administrator Dashboard</h1>
 
+    {# Membres #}
     {% include 'member/index.html.twig' %}
+
+    {# Articles #}
     {% include 'article/index.html.twig' %}
+
+    {# Actu #}
     {% include 'actuality/index.html.twig' %}
 {% endblock %}

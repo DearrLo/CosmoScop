@@ -1,29 +1,41 @@
-{% extends 'base.html.twig' %}
-
 {% block body %}
+	<div class="admin-section">
+		<h2 class="h1-dashboard">List of articles</h2>
 
-	{% if article.imageFilename %}
-		<img class="article-banner" src="{{ asset('uploads/' ~ article.imageFilename) }}" alt="{{ article.title }}">
-	{% endif %}
+		<div class="table-wrapper">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Title</th>
+						<th>Content</th>
+						<th>Date</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for article in articles %}
+						<tr>
+							<td>{{ article.id }}</td>
+							<td>{{ article.title }}</td>
+							<td>
+								{{ article.content|length > 100 
+                  ? article.content[:100] ~ '...'
+                  : article.content }}
+							</td>
+							<td>{{ article.publicationDate ? article.publicationDate|date('Y-m-d') : 'N/A' }}</td>
 
-	<article class="article-show-container">
-		<h1>{{ article.title }}</h1>
+							<td class="centered-container">
+	<a href="{{ path('app_article_show', { id: article.id }) }}" class="btn small">See more</a>
+	<a href="{{ path('app_article_edit', { id: article.id }) }}" class="btn small">Edit</a>
+</td>
 
-		<p class="publication-date">
-			Published
-			{{ article.publicationDate ? article.publicationDate|date('d/m/Y') : 'N/A' }}
-		</p>
 
-		<div class="article-content">
-			{{ article.content|raw }}
-		</div>
-
-		{% if is_granted('ROLE_ADMIN') %}
-			<a href="{{ path('app_article_edit', { id: article.id }) }}" class="btn btn-primary">
-				Edit
-			</a>
-		{% endif %}
-	</article>
-
-{% endblock %}
-
+						</tr>
+					</td>
+				</tbody>
+			</tr>
+			{% else %}
+		{% endfor %}
+	</tbody>
+</table></div></div>{% endblock %}

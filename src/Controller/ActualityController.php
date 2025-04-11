@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 // Ce controller gère tout ce qui touche aux acutality 
 #[Route('/actuality')]
@@ -30,7 +32,7 @@ final class ActualityController extends AbstractController
     // Ce form() sert à créer ou edit une actu, selon si on reçoit un objet Actuality ou non
     #[Route('/new', name: 'app_actuality_new', methods: ['GET', 'POST'])]
     #[Route('/{id}/edit', name: 'app_actuality_edit', methods: ['GET', 'POST'])]
-    public function form(Request $request, EntityManagerInterface $entityManager, Actuality $actuality = null): Response
+    public function form(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger, Actuality $actuality = null): Response
     {
         // Si pas d'actu en paramètre, c'est qu'on en crée une nouvelle
         $actuality = $actuality ?? new Actuality();
@@ -41,6 +43,27 @@ final class ActualityController extends AbstractController
 
         // Si tout est bon (form soumis + valide), on enregistre l'actu en base
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // On gère l'image s’il y en a une
+            $imageFile = $form->get('image')->getData();
+
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('actuality_images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // En cas d'erreur pendant l'upload, on peut logguer ou ignorer
+                }
+
+                $actuality->setImageFilename($newFilename);
+            }
+
             $entityManager->persist($actuality);
             $entityManager->flush();
 

@@ -3,7 +3,7 @@
 {% block body %}
 
 	{% if actuality.imageFilename %}
-		<img class="article-banner" src="{{ asset('uploads/' ~ actuality.imageFilename) }}" alt="{{ actuality.title }}">
+		<img class="article-banner" src="{{ asset('uploads/actuality_images/' ~ actuality.imageFilename) }}" alt="{{ actuality.title }}">
 	{% endif %}
 
 	<article
@@ -45,19 +45,25 @@
 
 		{# Boutons admin (edit / delete) #}
 		{% if is_granted('ROLE_ADMIN') %}
-			<div class="action-buttons">
-				<form method="post" action="{{ path('app_actuality_delete', { id: actuality.id }) }}" onsubmit="return confirm('Are you sure you want to delete ?');">
-					<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ actuality.id) }}">
-					<button class="btn btn-delete">Delete</button>
-					<a href="{{ path('app_actuality_edit', { id: actuality.id }) }}" class="btn btn-primary">Edit</a>
-				</form>
+			<div class="centered-container">
+				<div class="action-buttons">
+					<form method="post" action="{{ path('app_actuality_delete', { id: actuality.id }) }}" onsubmit="return confirm('Are you sure you want to delete ?');">
+						<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ actuality.id) }}">
+						<button class="btn">Delete</button>
+						<a href="{{ path('app_actuality_edit', { id: actuality.id }) }}" class="btn">Edit</a>
+					</form>
+				</div>
 			</div>
 		{% endif %}
 
 		{# Lien retour accueil #}
-		<a href="{{ path('app_actuality_index') }}" class="back-link">← Back to Home Page</a>
-
+		<div class="centered-container">
+			<a href="{{ path('app_actuality_index') }}" class="btn-back-home">
+				Back to Home Page
+			</a>
+		</div>
 	</article>
+
 
 	{# SECTION COMMENTAIRES #}
 	<section class="comments-section">

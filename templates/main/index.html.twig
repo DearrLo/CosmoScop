@@ -4,22 +4,21 @@
 
 {% block body %}
 
-{# Fenêtre modale après sucess du register pour confirmer la créa de compte #}
-    {% for message in app.flashes('success') %}
-        <div class="modal-flash" role="alert" aria-live="assertive">
-            <div class="modal-content">
-                <p>{{ message }}</p>
-                <button onclick="document.getElementById('flashModal').style.display='none'">OK</button>
-            </div>
+{# Fenêtre modale après succès du register pour confirmer la créa de compte #}
+{% for message in app.flashes('success') %}
+    <div class="modal-flash" role="alert" aria-live="assertive">
+        <div class="modal-content">
+            <p>{{ message }}</p>
+            <button onclick="this.closest('.modal-flash').style.display='none'">OK</button>
         </div>
-    {% endfor %}
+    </div>
+{% endfor %}
 
     <section class="animation-container">
-        <div class="solar-container"></div>
         <div id="app"></div>
 
-        <link rel="stylesheet" href="/js/animation/assets/main-DY4CJGLJ.css">
-        <script type="module" src="/js/animation/assets/main--NeYGpD-.js"></script>
+        <link rel="stylesheet" href= "{{ asset('js/animation/assets/index-DiEklgO9.css') }}">
+        <script type="module" src="{{ asset('js/animation/assets/index-BXwbYVvF.js') }}"></script>
     </section>
 
     <main class="main-container">

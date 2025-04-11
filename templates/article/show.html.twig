@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
 	{% if article.imageFilename %}
 		<img class="article-banner" src="{{ asset('uploads/' ~ article.imageFilename) }}" alt="{{ article.title }}">
 	{% endif %}
@@ -18,12 +17,15 @@
 			{{ article.content|raw }}
 		</div>
 
+		<div class="centered-container">
+			<a href="{{ path('app_actuality_index') }}" class="btn-back-home">Back to Home Page</a>
+		</div>
+
 		{% if is_granted('ROLE_ADMIN') %}
-			<a href="{{ path('app_article_edit', { id: article.id }) }}" class="btn btn-primary">
-				Edit
-			</a>
+			<div class="centered-container">
+				<a href="{{ path('app_article_edit', { id: article.id }) }}" class="btn">Edit</a>
+			</div>
 		{% endif %}
-
+		
 	</div>
-
 {% endblock %}

@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class ActualityType extends AbstractType
 {
@@ -18,13 +19,23 @@ class ActualityType extends AbstractType
             ->add('publicationDate', DateType::class, [
                 'widget' => 'single_text',
             ])
-            ->add('imageFilename', FileType::class, [
+            ->add('image', FileType::class, [
                 'mapped' => false,
                 'required' => false,
-                'label' => 'Image (fichier)',
+                'label' => '',
+                'constraints' => [
+                    new File([
+                        'maxSize' => '2M',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                            'image/webp',
+                        ],
+                        'mimeTypesMessage' => 'Merci de choisir une image valide (JPEG, PNG, WEBP)',
+                    ])
+                ]
             ])
-            ->add('content')
-        ;
+            ->add('content');
     }
 
     public function configureOptions(OptionsResolver $resolver): void
