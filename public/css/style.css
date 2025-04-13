@@ -171,6 +171,17 @@ header {
 }
 
 .btn-delete {
+  display: inline-block;
+  margin: 2rem auto;
+  padding: 0.4rem 1.3rem;
+  font-size: 0.8rem;
+  border: 2px solid #e74c3c; 
+  border-radius: 2rem;
+  background-color: transparent;
+  color: #e74c3c;
+  text-transform: uppercase;
+  text-align: center;
+  transition: 0.3s;
 }
 
 
@@ -908,4 +919,18 @@ body.dyslexia-mode a {
 
 .animation-container {
 margin-top: 90px;
+}
+
+
+/* éléments cachés */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+  white-space: nowrap;
 }

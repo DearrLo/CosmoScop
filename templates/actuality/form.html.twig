@@ -1,36 +1,46 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{{ actuality is defined ? 'Edit' : 'Create' }} an actuality{% endblock %}
+
 {% block body %}
-  {{ form_start(form, {'attr': {'class': 'form-container'}}) }}
+
+  <h1 class="h1-dashboard">{{ actuality is defined ? 'Edit' : 'Create' }} an actuality</h1>
+
+  {{ form_start(form, {'attr': {'class': 'form-container', 'aria-label': 'Actuality form'}}) }}
 
     {{ form_row(form.title, {
       'attr': {
         'class': 'form-control',
-        'placeholder': 'Title'
+        'placeholder': 'Enter the title',
+        'aria-label': 'Title of the actuality'
       }
     }) }}
 
     {{ form_row(form.publicationDate, {
       'attr': {
-        'class': 'form-control'
+        'class': 'form-control',
+        'aria-label': 'Publication date of the actuality'
       }
     }) }}
 
     {{ form_row(form.image, {
       'attr': {
-        'class': 'form-control'
+        'class': 'form-control',
+        'aria-label': 'Image file for the actuality'
       }
     }) }}
 
     {{ form_row(form.content, {
       'attr': {
         'class': 'form-control',
-        'placeholder': 'Content',
-        'rows': 10
+        'placeholder': 'Enter the content here',
+        'rows': 10,
+        'aria-label': 'Main content of the actuality'
       }
     }) }}
 
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-primary" aria-label="Save actuality">Save</button>
 
   {{ form_end(form) }}
+
 {% endblock %}

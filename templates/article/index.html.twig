@@ -1,16 +1,18 @@
+{% block title %}Articles Management — Admin{% endblock %}
+
 {% block body %}
 	<div class="admin-section">
-		<h2 class="h1-dashboard">List of articles</h2>
+		<h1 class="h1-dashboard">List of articles</h1>
 
 		<div class="table-wrapper">
-			<table class="table">
+			<table class="table" aria-label="Table of all articles">
 				<thead>
 					<tr>
-						<th>ID</th>
-						<th>Title</th>
-						<th>Content</th>
-						<th>Date</th>
-						<th>Actions</th>
+						<th scope="col">ID</th>
+						<th scope="col">Title</th>
+						<th scope="col">Content</th>
+						<th scope="col">Date</th>
+						<th scope="col">Actions</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -20,22 +22,22 @@
 							<td>{{ article.title }}</td>
 							<td>
 								{{ article.content|length > 100 
-                  ? article.content[:100] ~ '...'
-                  : article.content }}
+									? article.content[:100] ~ '...'
+									: article.content }}
 							</td>
 							<td>{{ article.publicationDate ? article.publicationDate|date('Y-m-d') : 'N/A' }}</td>
-
 							<td class="centered-container">
-	<a href="{{ path('app_article_show', { id: article.id }) }}" class="btn small">See more</a>
-	<a href="{{ path('app_article_edit', { id: article.id }) }}" class="btn small">Edit</a>
-</td>
-
-
+								<a href="{{ path('app_article_show', { id: article.id }) }}" class="btn small" aria-label="View article {{ article.title }}">See more</a>
+								<a href="{{ path('app_article_edit', { id: article.id }) }}" class="btn small" aria-label="Edit article {{ article.title }}">Edit</a>
+							</td>
 						</tr>
-					</td>
+					{% else %}
+						<tr>
+							<td colspan="5">No article found.</td>
+						</tr>
+					{% endfor %}
 				</tbody>
-			</tr>
-			{% else %}
-		{% endfor %}
-	</tbody>
-</table></div></div>{% endblock %}
+			</table>
+		</div>
+	</div>
+{% endblock %}

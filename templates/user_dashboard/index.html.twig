@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Profile{% endblock %}
+{% block title %}Profile — CosmoScop{% endblock %}
 
 {% block body %}
-<main class="main" role="main" aria-label="User profile page">
+<main class="main" role="main" aria-labelledby="profile-header">
+  <h1 id="profile-header" class="visually-hidden">User profile</h1>
 
   <div class="user-dashboard dashboard-top">
 
@@ -34,9 +35,9 @@
       >
       <div class="username">{{ user.name }}</div>
 
-      <form method="post" action="{{ path('app_user_upload_picture') }}" enctype="multipart/form-data">
+      <form method="post" action="{{ path('app_user_upload_picture') }}" enctype="multipart/form-data" aria-label="Update profile picture form">
         <input type="file" name="profile_picture" id="profile_picture" accept="image/jpeg,image/png,image/webp" class="file-input" onchange="this.form.submit();" style="display: none;">
-        <button type="button" class="btn upload-btn" onclick="document.getElementById('profile_picture').click();">Edit</button>
+        <button type="button" class="btn upload-btn" onclick="document.getElementById('profile_picture').click();" aria-label="Upload new profile picture">Edit</button>
       </form>
     </div>
 
@@ -46,8 +47,8 @@
     <h2 class="favorites-title">My favorite list :</h2>
 
     {% if favorites is not empty %}
-      <table class="favorites-table">
-        <caption class="visually-hidden">List of favorite articles</caption>
+      <table class="favorites-table" aria-describedby="favorites-description">
+        <caption id="favorites-description" class="visually-hidden">List of favorite articles</caption>
         <thead>
           <tr>
             <th scope="col">ID</th>

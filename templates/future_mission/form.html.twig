@@ -1,34 +1,43 @@
 {% block body %}
 
-  {{ form_start(form, {'attr': {'class': 'form-container'}}) }}
+  {{ form_start(form, {
+    'attr': {
+      'class': 'form-container',
+      'aria-label': 'Form to add or edit a future space mission'
+    }
+  }) }}
 
     {# Titre #}
     {{ form_row(form.title, {
       'attr': {
         'class': 'form-control',
-        'placeholder': 'Place title here'
+        'placeholder': 'Enter mission title',
+        'aria-label': 'Mission title'
       }
     }) }}
 
     {# Date de lancement #}
     {{ form_row(form.launchDate, {
       'attr': {
-        'class': 'form-control'
+        'class': 'form-control',
+        'aria-label': 'Launch date of the mission'
       }
     }) }}
 
-    {# Image #}
+    {# Upload de l'image #}
     {{ form_row(form.imageFile, {
       'attr': {
-        'class': 'form-control'
+        'class': 'form-control',
+        'aria-label': 'Upload an image for the mission'
       }
     }) }}
 
-    {# Description #}
+    {# Descri mission #}
     {{ form_row(form.description, {
       'attr': {
         'class': 'form-control content-field',
-        'placeholder': 'Describe the mission here',
+        'placeholder': 'Describe the mission details here',
+        'aria-label': 'Description of the mission',
         'rows': 10
       }
     }) }}
@@ -37,13 +46,14 @@
     {{ form_row(form.agency, {
       'attr': {
         'class': 'form-control',
-        'placeholder': 'e.g. NASA, ESA'
+        'placeholder': 'e.g. NASA, ESA, CNSA',
+        'aria-label': 'Space agency responsible for the mission'
       }
     }) }}
 
-    <button type="submit" class="btn btn-primary">
-      Save
-    </button>
+    <div class="centered-container">
+      <button type="submit" class="btn btn-primary" aria-label="Save the mission">Save</button>
+    </div>
 
   {{ form_end(form) }}
 {% endblock %}

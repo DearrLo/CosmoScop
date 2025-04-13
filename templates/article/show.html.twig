@@ -1,16 +1,19 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{{ article.title }} — Article{% endblock %}
+
 {% block body %}
 	{% if article.imageFilename %}
-		<img class="article-banner" src="{{ asset('uploads/' ~ article.imageFilename) }}" alt="{{ article.title }}">
+		<img class="article-banner"
+			 src="{{ asset('uploads/' ~ article.imageFilename) }}"
+			 alt="Illustration image for article {{ article.title }}">
 	{% endif %}
 
 	<div class="article-show-container">
 		<h1>{{ article.title }}</h1>
 
 		<p class="publication-date">
-			Published
-			{{ article.publicationDate ? article.publicationDate|date('d/m/Y') : 'N/A' }}
+			Published {{ article.publicationDate ? article.publicationDate|date('d/m/Y') : 'N/A' }}
 		</p>
 
 		<div class="article-content">
@@ -18,14 +21,21 @@
 		</div>
 
 		<div class="centered-container">
-			<a href="{{ path('app_actuality_index') }}" class="btn-back-home">Back to Home Page</a>
+			<a href="{{ path('home') }}"
+			   class="btn-back-home"
+			   aria-label="Return to home page">
+				Back to Home Page
+			</a>
 		</div>
 
 		{% if is_granted('ROLE_ADMIN') %}
 			<div class="centered-container">
-				<a href="{{ path('app_article_edit', { id: article.id }) }}" class="btn">Edit</a>
+				<a href="{{ path('app_article_edit', { id: article.id }) }}"
+				   class="btn"
+				   aria-label="Edit article {{ article.title }}">
+					Edit
+				</a>
 			</div>
 		{% endif %}
-		
 	</div>
 {% endblock %}

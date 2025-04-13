@@ -1,15 +1,15 @@
-<div class="admin-section members">
-    <h2>List of the members</h2>
-    
+<section class="admin-section members" aria-label="Members management section">
+    <h2 class="h1-dashboard">Registered Members</h2>
+
     <div class="table-wrapper">
-        <table class="table">
+        <table class="table" aria-label="Table of registered users">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Email</th>
-                    <th>Username</th>
-                    <th>Marked favorite</th>
-                    <th>Actions</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Marked favorite</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,7 +20,11 @@
                         <td>{{ member.getName() }}</td>
                         <td>{{ member.getFavorites|length }}</td>
                         <td>
-                        <a href="{{ path('admin_user_dashboard', { 'id': member.id }) }}" class="btn-see">See more</a>
+                            <a href="{{ path('admin_user_dashboard', { 'id': member.id }) }}"
+                               class="btn-see"
+                               aria-label="View profile of {{ member.getName() }}">
+                                See more
+                            </a>
                         </td>
                     </tr>
                 {% else %}
@@ -31,4 +35,4 @@
             </tbody>
         </table>
     </div>
-</div>
+</section>

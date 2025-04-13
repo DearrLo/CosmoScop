@@ -1,23 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Update my email{% endblock %}
+{% block title %}Update Email — CosmoScop{% endblock %}
 
 {% block body %}
-<main class="main">
+<main class="main" aria-label="Section to update your email">
   <div class="form-container">
     <h1>Update my email</h1>
 
-    {{ form_start(emailForm) }}
+    {{ form_start(emailForm, {
+      'attr': { 'aria-label': 'Update email form' }
+    }) }}
       <div>
         {{ form_label(emailForm.mail) }}
-        {{ form_widget(emailForm.mail, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_widget(emailForm.mail, {
+          'attr': {
+            'class': 'form-control',
+            'aria-label': 'New email address'
+          }
+        }) }}
         {{ form_errors(emailForm.mail) }}
       </div>
 
-      <button type="submit" class="btn">Update</button>
+      <div class="centered-container">
+        <button type="submit" class="btn" aria-label="Update my email address">Update</button>
+      </div>
     {{ form_end(emailForm) }}
-    
-    <a href="{{ path('app_user_dashboard') }}" class="btn transparent" style="margin-top: 20px;">Back to my profile</a>
+
+    <a href="{{ path('app_user_dashboard') }}" class="btn transparent" style="margin-top: 20px;">
+      Back to my profile
+    </a>
   </div>
 </main>
 {% endblock %}
+

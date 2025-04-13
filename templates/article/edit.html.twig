@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	{{ article is defined ? 'Edit' : 'Create' }}
-	an article
+	{{ article is defined ? 'Edit an article' : 'Create a new article' }}
 {% endblock %}
 
 {% block body %}
-	<h1>{{ article is defined ? 'Edit' : 'Create' }}
-		an article</h1>
+	<h1 class="h1-dashboard">
+		{{ article is defined ? 'Edit an article' : 'Create a new article' }}
+	</h1>
 
 	{% include 'article/form.html.twig' %}
 {% endblock %}

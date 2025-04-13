@@ -1,25 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mes Favoris{% endblock %}
+{% block title %}My Favorites — CosmoScop{% endblock %}
 
 {% block body %}
-<main id="main">
-    <h1>Mes Favoris</h1>
+<main id="main" aria-label="Favorites list page">
+    <h1 class="h1-dashboard">My Favorite Articles</h1>
 
     {% if favorites is empty %}
-        <p>Aucun article en favori pour le moment.</p>
+        <p>You haven't added any articles to your favorites yet.</p>
     {% else %}
         <section aria-labelledby="favorites-list">
-            <h2 id="favorites-list">Liste de vos articles favoris</h2>
+            <h2 id="favorites-list">Your saved articles</h2>
             <ul>
                 {% for favorite in favorites %}
                     <li>
-                        <a href="{{ path('app_article_show', {id: favorite.article.id}) }}">
+                        <a href="{{ path('app_article_show', {id: favorite.article.id}) }}"
+                           aria-label="Read article {{ favorite.article.title }}">
                             {{ favorite.article.title }}
                         </a>
                         <form action="{{ path('app_favorite_remove', {id: favorite.id}) }}" method="post">
-                            <button type="submit" aria-label="Retirer {{ favorite.article.title }} des favoris">
-                                Retirer des favoris
+                            <button type="submit"
+                                    aria-label="Remove {{ favorite.article.title }} from favorites">
+                                Remove from favorites
                             </button>
                         </form>
                     </li>

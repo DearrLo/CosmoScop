@@ -1,9 +1,13 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{{ mission.title }} — Future Mission{% endblock %}
+
 {% block body %}
 
 	{% if mission.imageFilename %}
-		<img class="article-banner" src="{{ asset('uploads/' ~ mission.imageFilename) }}" alt="{{ mission.title }}">
+		<img class="article-banner"
+			 src="{{ asset('uploads/' ~ mission.imageFilename) }}"
+			 alt="Illustration of mission {{ mission.title }}">
 	{% endif %}
 
 	<article class="article-show-container">
@@ -25,22 +29,29 @@
 		<div class="article-content">
 			{{ mission.description|nl2br }}
 		</div>
-		
+
 		{# Boutons admin (edit) #}
 		{% if is_granted('ROLE_ADMIN') %}
 			<div class="centered-container">
 				<div class="action-buttons">
-					<a href="{{ path('app_future_mission_edit', { id: mission.id }) }}" class="btn">Edit</a>
+					<a href="{{ path('app_future_mission_edit', { id: mission.id }) }}"
+					   class="btn"
+					   aria-label="Edit future mission {{ mission.title }}">
+						Edit
+					</a>
 				</div>
 			</div>
 		{% endif %}
 
 		{# Lien retour accueil #}
 		<div class="centered-container">
-			<a href="{{ path('app_actuality_index') }}" class="btn-back-home">
+			<a href="{{ path('home') }}"
+			   class="btn-back-home"
+			   aria-label="Back to the home page">
 				Back to Home Page
 			</a>
 		</div>
 
 	</article>
 {% endblock %}
+

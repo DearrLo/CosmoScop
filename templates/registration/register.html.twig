@@ -1,31 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}Register — CosmoScop{% endblock %}
 
 {% block body %}
-
+<main aria-label="User registration form">
     <h1 class="h1-registration">Register</h1>
 
-    {{ form_start(registrationForm) }}
+    {{ form_start(registrationForm, {
+        'attr': {
+            'aria-label': 'Registration form for new users'
+        }
+    }) }}
         <div>
             {{ form_label(registrationForm.mail) }}
-            {{ form_widget(registrationForm.mail, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(registrationForm.mail, {
+                'attr': {
+                    'class': 'form-control',
+                    'aria-label': 'Email address'
+                }
+            }) }}
             {{ form_errors(registrationForm.mail) }}
         </div>
 
         <div>
             {{ form_label(registrationForm.name) }}
-            {{ form_widget(registrationForm.name, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(registrationForm.name, {
+                'attr': {
+                    'class': 'form-control',
+                    'aria-label': 'Username'
+                }
+            }) }}
             {{ form_errors(registrationForm.name) }}
         </div>
 
         <div>
             {{ form_label(registrationForm.plainPassword) }}
-            {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(registrationForm.plainPassword, {
+                'attr': {
+                    'class': 'form-control',
+                    'aria-label': 'Password'
+                }
+            }) }}
             {{ form_errors(registrationForm.plainPassword) }}
         </div>
 
-        <button type="submit" class="btn">Register</button>
+        <div class="centered-container">
+            <button type="submit" class="btn" aria-label="Submit registration form">Register</button>
+        </div>
     {{ form_end(registrationForm) }}
-
+</main>
 {% endblock %}

@@ -1,8 +1,15 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta
+		name="viewport" content="width=device-width, initial-scale=1.0">
+
+		{# SEO tags #}
+		<meta name="description" content="CosmoScop is an interactive website to explore the solar system, learn about planets, and discover upcoming space missions.">
+		<meta name="author" content="@DearLo">
+		<meta name="robots" content="index, follow">
+
 		<title>
 			{% block title %}CosmoScop
 			{% endblock %}
@@ -10,6 +17,7 @@
 
 		<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> {% block stylesheets %}{% endblock %}
+		<link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 		</head>
 
 		<body>

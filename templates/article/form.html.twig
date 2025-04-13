@@ -1,41 +1,52 @@
 {% block body %}
 
-  {{ form_start(form, {'attr': {'class': 'form-container'}}) }}
+	{{ form_start(form, {
+    'attr': {
+      'class': 'form-container',
+      'aria-label': 'Article submission form'
+    }
+  }) }}
 
-    {# Titre #}
-    {{ form_row(form.title, {
+	{# Titre #}
+	{{ form_row(form.title, {
       'attr': {
         'class': 'form-control',
-        'placeholder': 'Place title here'
+        'placeholder': 'Enter the article title',
+        'aria-label': 'Title of the article'
       }
     }) }}
 
-    {# Date #}
-    {{ form_row(form.publicationDate, {
+	{# Date #}
+	{{ form_row(form.publicationDate, {
       'attr': {
-        'class': 'form-control'
+        'class': 'form-control',
+        'aria-label': 'Publication date of the article'
       }
     }) }}
 
-    {# Image #}
-    {{ form_row(form.imageFile, {
+	{# Upload d'image #}
+	{{ form_row(form.imageFile, {
       'attr': {
-        'class': 'form-control'
+        'class': 'form-control',
+        'aria-label': 'Upload image for the article'
       }
     }) }}
 
-    {# Content #}
-    {{ form_row(form.content, {
+	{# Contenu #}
+	{{ form_row(form.content, {
       'attr': {
-        'class': 'form-control content-field', 
+        'class': 'form-control content-field',
         'placeholder': 'Write your article here',
+        'aria-label': 'Content of the article',
         'rows': 10
       }
     }) }}
 
-    <button type="submit" class="btn btn-primary">
-      Save
-    </button>
+	<div class="centered-container">
+		<button type="submit" class="btn btn-primary" aria-label="Save the article">
+			Save
+		</button>
+	</div>
 
-  {{ form_end(form) }}
+	{{ form_end(form) }}
 {% endblock %}
