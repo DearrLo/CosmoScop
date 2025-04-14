@@ -1,0 +1,28 @@
+# robots.txt - autorisation classique d'indexation
+User-agent: *
+
+# Autorise tout le monde à indexer le site
+Allow: /
+
+# Interdiction d'indexer les dossiers techniques
+Disallow: /bundles/
+Disallow: /config/
+Disallow: /var/
+Disallow: /vendor/
+Disallow: /node_modules/
+Disallow: /tests/
+Disallow: /private/
+
+# Empêche l’indexation des fichiers sensibles
+Disallow: /composer.lock
+Disallow: /composer.json
+Disallow: /package.json
+Disallow: /webpack.config.js
+Disallow: /symfony.lock
+Disallow: /phpunit.xml
+
+# Empêche l'indexation du back-office (si applicable)
+Disallow: /admin/
+
+# Lien vers le sitemap si tu en as un
+Sitemap: https://www.ton-site.fr/sitemap.xml
