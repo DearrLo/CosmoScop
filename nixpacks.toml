@@ -4,17 +4,6 @@ nixPkgs = ["nodejs_20", "php", "phpPackages.composer"]
 [phases.install]
 cmds = [
   "composer install --no-scripts --prefer-dist --optimize-autoloader",
-  "npm install",
-  "npm install postcss-loader@^8.1.0 autoprefixer --save-dev",
-  "npm install sass-loader@^16.0.1 sass --save-dev",
-  "npm install webpack-notifier@^1.15.0 --save-dev",
-  "npm install @babel/plugin-proposal-class-properties --save-dev",
-  "npm install @symfony/stimulus-bundle@^2.0.0 --save-dev"
-]
-
-[phases.build]
-cmds = [
-  "npm run build"
 ]
  
 [start]
