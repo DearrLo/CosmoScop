@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Page d'accueil -->
+  <url>
+    <loc>https://cosmoscop-production.up.railway.app/</loc>
+    <priority>1.0</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+    Page de registration
+  <url>
+    <loc>https://cosmoscop-production.up.railway.app/registration</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+ 
+
+    Page de login
+  <url>
+    <loc>https://cosmoscop-production.up.railway.app/login</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+ 
+
+  <!-- Exemple à dupliquer :
+  <url>
+    <loc>https://www.ton-site.fr/nom-de-ta-page</loc>
+    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  -->
+
+</urlset>

@@ -24,5 +24,4 @@ Disallow: /phpunit.xml
 # Empêche l'indexation du back-office (si applicable)
 Disallow: /admin/
 
-# Lien vers le sitemap si tu en as un
-Sitemap: https://www.ton-site.fr/sitemap.xml
+Sitemap: https://cosmoscop-production.up.railway.app//sitemap.xml
