@@ -1,14 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ actuality is defined ? 'Edit' : 'Create' }} an actuality{% endblock %}
+{% block title %}
+	{{ actuality is defined ? 'Edit' : 'Create' }}
+	an actuality
+{% endblock %}
 
 {% block body %}
 
-  <h1 class="h1-dashboard">{{ actuality is defined ? 'Edit' : 'Create' }} an actuality</h1>
+	<h1 class="h1-dashboard">{{ actuality is defined ? 'Edit' : 'Create' }}
+		an actuality</h1>
 
-  {{ form_start(form, {'attr': {'class': 'form-container', 'aria-label': 'Actuality form'}}) }}
+	{{ form_start(form, {'attr': {'class': 'form-container', 'aria-label': 'Actuality form'}}) }}
 
-    {{ form_row(form.title, {
+	{{ form_row(form.title, {
       'attr': {
         'class': 'form-control',
         'placeholder': 'Enter the title',
@@ -16,21 +20,21 @@
       }
     }) }}
 
-    {{ form_row(form.publicationDate, {
+	{{ form_row(form.publicationDate, {
       'attr': {
         'class': 'form-control',
         'aria-label': 'Publication date of the actuality'
       }
     }) }}
 
-    {{ form_row(form.image, {
+	{{ form_row(form.image, {
       'attr': {
         'class': 'form-control',
         'aria-label': 'Image file for the actuality'
       }
     }) }}
 
-    {{ form_row(form.content, {
+	{{ form_row(form.content, {
       'attr': {
         'class': 'form-control',
         'placeholder': 'Enter the content here',
@@ -39,8 +43,10 @@
       }
     }) }}
 
-    <button type="submit" class="btn btn-primary" aria-label="Save actuality">Save</button>
+	<div class="centered-container">
+		<button type="submit" class="btn btn-primary" aria-label="Save actuality">Save</button>
+	</div>
 
-  {{ form_end(form) }}
+	{{ form_end(form) }}
 
 {% endblock %}

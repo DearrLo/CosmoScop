@@ -34,17 +34,19 @@
                                class="btn small"
                                aria-label="View actuality '{{ actuality.title }}'">Show</a>
 
-                            <a href="{{ path('app_actuality_edit', { id: actuality.id }) }}"
-                               class="btn small"
-                               aria-label="Edit actuality '{{ actuality.title }}'">Edit</a>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a href="{{ path('app_actuality_edit', { id: actuality.id }) }}"
+                                   class="btn small"
+                                   aria-label="Edit actuality '{{ actuality.title }}'">Edit</a>
 
-                            <form method="post"
-                                  action="{{ path('app_actuality_delete', { id: actuality.id }) }}"
-                                  onsubmit="return confirm('Are you sure you want to delete this item?');">
-                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ actuality.id) }}">
-                                <button class="btn"
-                                        aria-label="Delete actuality '{{ actuality.title }}'">Delete</button>
-                            </form>
+                                <form method="post"
+                                      action="{{ path('app_actuality_delete', { id: actuality.id }) }}"
+                                      onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ actuality.id) }}">
+                                    <button class="btn"
+                                            aria-label="Delete actuality '{{ actuality.title }}'">Delete</button>
+                                </form>
+                            {% endif %}
                         </td>
                     </tr>
                 {% else %}
@@ -56,10 +58,12 @@
         </table>
     </div>
 
-    <div class="centered-container">
-        <a href="{{ path('app_actuality_new') }}"
-           class="btn small btn-add"
-           aria-label="Create a new actuality">Add an actuality</a>
-    </div>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="centered-container">
+            <a href="{{ path('app_actuality_new') }}"
+               class="btn small btn-add"
+               aria-label="Create a new actuality">Add an actuality</a>
+        </div>
+    {% endif %}
 </div>
 {% endblock %}

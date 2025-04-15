@@ -18,8 +18,8 @@ class Favorite
     private ?User $user = null;
 
     #[ORM\ManyToOne(targetEntity: Actuality::class)]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Actuality $actuality = null;
+    #[ORM\JoinColumn(nullable: false, onDelete: "CASCADE")]
+    private ?Actuality $actuality = null;    
 
     public function getId(): ?int
     {

@@ -37,7 +37,6 @@ main {
 
 ul {
   list-style: none;
-  margin-top: 10px;
 }
 
 a {
@@ -74,18 +73,19 @@ header {
   flex: 1;
   display: flex;
   margin-top: 10px;
-  align-items: center;
+  align-items:flex-start;
 }
 
 .logo {
   font-family: "Space Grotesk", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: var(--clr-light);
+  margin-left: -70px;
 }
 
 .logo:hover {
   transition: 0.8s;
-  transform: scale(1.3);
+  transform: scale(1.2);
 }
 
 .admin-icon {
@@ -351,7 +351,7 @@ header {
 
 .user-menu {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 10px;
 }
 
@@ -362,7 +362,7 @@ header {
 }
 
 .user-icon i {
-  color: inherit !important;
+  color: inherit;
 }
 
 @keyframes animation {
@@ -379,7 +379,7 @@ header {
 @media (max-width: 920px) {
   .hamburger-menu-container {
     display: flex;
-    color: #000 !important;
+    color: #000;
   }
 
   #check {
@@ -456,15 +456,6 @@ header {
   }
 }
 
-/* Partie animation three.js */
-html, body {
-  margin: 0;
-  padding: 0;
-  background-color: black;
-  height: auto;
-  overflow: auto;
-}
-
 /* Partie Footer */
 .footer {
   display: flex;
@@ -535,9 +526,15 @@ html, body {
 /* Actualitées récentes */
 .recent-articles {
   margin-top: 50px;
+  margin-bottom: 50px;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
+}
+
+.recent-articles h2 {
+  margin-bottom: 20px;
+  text-transform: uppercase;
 }
 
 .articles-list {
@@ -548,12 +545,28 @@ html, body {
 
 .article-card {
   background-color: rgba(84, 82, 82, 0.359);
-  padding: 15px;
-  border-radius: 5px;
-  color: #fff6ff;
+  padding: 8px;
+  border-radius: 10px;
   flex: 1 1 calc(50% - 20px); /* largeur de mes cards */
-  box-sizing: border-box;
   min-height: 250px; /* hauteur de mes cards, à modif après l'implément d'images */
+}
+
+.card-image {
+	width: 100%;
+	height: 140px; 
+	object-fit: cover;
+	border-radius: 12px;
+	display: block;
+  opacity: 80%;
+  margin-bottom: 10px;
+}
+
+.article-card h3 {
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.article-card p {
+  margin-bottom: 8px;
 }
 
 .article-card a {
@@ -664,6 +677,7 @@ html, body {
   text-align: center;
   position: relative;
   z-index: 1;
+  text-transform: uppercase;
 }
 
 .admin-section,
@@ -871,19 +885,12 @@ body.dyslexia-mode a {
     background-color: rgba(255, 255, 255, 0.06);
     border-radius: 12px;
     padding: 5px;
+    margin-top: 80px;
     margin-bottom: 60px;
     color: #fff6ff;
-    font-size: 1.05rem;
-    line-height: 1.7;
+    font-size: 1rem;
+    line-height: 1.5;
   }
-
-  .about-us h1,
-.about-us h2 {
-  font-size: 1.6rem;
-  margin-bottom: 20px;
-  font-weight: bold;
-  color: #fff6ff;
-}
 
 .about-us p {
   margin-bottom: 15px;

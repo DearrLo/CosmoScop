@@ -31,21 +31,25 @@
 
 				<div class="articles-list">
 					{% for actuality in actualities %}
+
 						<div class="article-card">
+							{% if actuality.imageFilename %}
+								<img class="card-image" src="{{ asset('uploads/actuality_images/' ~ actuality.imageFilename) }}" alt="{{ actuality.title }}">
+							{% endif %}
 							<h3>{{ actuality.title }}</h3>
 							<p>{{ actuality.content|slice(0, 100) }}...</p>
 							<a href="{{ path('app_actuality_show', { id: actuality.id }) }}">
-								Read more about
-								{{ actuality.title }}
+								Read more...
 							</a>
 						</div>
+
 					{% else %}
 						<p>Sorry, we didn't find any new actuality</p>
 					{% endfor %}
 				</div>
 
 				<div class="centered-container">
-					<a href="{{ path('app_article_index') }}" class="btn" title="Browse all space articles">See more...</a>
+					<a href="{{ path('app_actuality_index') }}" class="btn" title="Browse all space articles">See more...</a>
 				</section>
 			</div>
 		{% endif %}

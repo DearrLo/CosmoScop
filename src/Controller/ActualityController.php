@@ -34,6 +34,9 @@ final class ActualityController extends AbstractController
     #[Route('/{id}/edit', name: 'app_actuality_edit', methods: ['GET', 'POST'])]
     public function form(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger, Actuality $actuality = null): Response
     {
+        // On vérifie que seul un admin peut accéder à cette page
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         // Si pas d'actu en paramètre, c'est qu'on en crée une nouvelle
         $actuality = $actuality ?? new Actuality();
         
@@ -126,6 +129,9 @@ final class ActualityController extends AbstractController
     #[Route('/{id}/delete', name: 'app_actuality_delete', methods: ['POST'])]
     public function delete(Request $request, Actuality $actuality, EntityManagerInterface $entityManager): Response
     {
+        // Seuls les admins peuvent supprimer
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         if ($this->isCsrfTokenValid('delete' . $actuality->getId(), $request->request->get('_token'))) {
             $entityManager->remove($actuality);
             $entityManager->flush();

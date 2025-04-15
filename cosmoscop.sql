@@ -1,0 +1,273 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1:3306
+-- Généré le : lun. 14 avr. 2025 à 14:16
+-- Version du serveur : 9.1.0
+-- Version de PHP : 8.3.14
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données : `cosmoscop`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `actuality`
+--
+
+DROP TABLE IF EXISTS `actuality`;
+CREATE TABLE IF NOT EXISTS `actuality` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `publication_date` date NOT NULL,
+  `image_filename` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `actuality`
+--
+
+INSERT INTO `actuality` (`id`, `title`, `content`, `publication_date`, `image_filename`, `description`) VALUES
+(1, 'Rosalind Franklin: Europe’s Mars Rover Reignited with Help from Airbus and NASA', 'On March 29, 2025, the European Space Agency (ESA) officially announced the revival of its long-delayed Mars rover mission, Rosalind Franklin. Originally set to launch in partnership with Russia, the mission faced indefinite postponement following the geopolitical fallout of 2022. Now, ESA is moving forward with Airbus UK developing a new landing platform, and support from NASA to complete the mission.\r\n\r\nRosalind Franklin is a cutting-edge rover designed to search for signs of ancient microbial life beneath the surface of Mars. Equipped with a unique drill capable of reaching depths of up to two meters, it aims to analyze soil that has been shielded from radiation and surface conditions — offering the best chance yet at detecting preserved biosignatures.\r\n\r\nWith Russia’s withdrawal, the mission’s landing system — originally provided by the Russian space agency Roscosmos — had to be replaced. Airbus will now design and build a new platform from the UK, while NASA is expected to contribute to the launch and landing systems, marking a new phase of international collaboration.\r\n\r\nThe launch is scheduled for 2028, with a planned arrival on Mars in 2030. Though delayed, the mission is seen as a symbol of resilience and adaptability in the face of global challenges. The rover itself has been ready since 2019 and is currently stored in Italy, awaiting integration with the new landing system.\r\n\r\nThis relaunch not only salvages years of scientific and engineering effort, but also strengthens ties between Europe and the United States in space exploration. As the countdown to 2028 begins, Rosalind Franklin once again holds promise as a milestone in humanity’s search for life beyond Earth.', '2025-03-29', 'introduction-solar-system-fewer-planets-67f8302a7afb6.jpg', NULL),
+(2, 'test 2', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.\r\n\r\nThe standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.\r\n\r\nWhere can I get some?\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.', '0000-00-00', NULL, NULL),
+(3, 'test 3', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.\r\n\r\nThe standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.\r\n\r\nWhere can I get some?\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.', '0000-00-00', NULL, NULL),
+(4, 'test 4', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.\r\n\r\nThe standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.\r\n\r\nWhere can I get some?\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.', '0000-00-00', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `article`
+--
+
+DROP TABLE IF EXISTS `article`;
+CREATE TABLE IF NOT EXISTS `article` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `publication_date` date NOT NULL,
+  `image_filename` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `article`
+--
+
+INSERT INTO `article` (`id`, `title`, `content`, `publication_date`, `image_filename`) VALUES
+(2, 'Introduction', 'If we know that the earliest observations of the sky were carried out by Mesopotamian civilizations (Egyptian, Greek, Arab world, etc.), the first significant scientific breakthrough of the modern era is attributed to the astronomer Nicolaus Copernicus, who, in the 16th century, developed a heliocentric model in which the Earth revolves around the Sun. This theory was progressively validated through the research and support of other astronomers, including Galileo.\r\n\r\n\r\nGalileo himself would also bring significant advances. Shortly after the telescope was invented, he improved its use to observe celestial bodies. Thanks to this instrument, he notably discovered Jupiter’s satellites and confirmed the phases of Venus, thus reinforcing the idea that not all celestial bodies revolve around the Earth. These discoveries marked a turning point in the history of astronomy and solidified the Sun\'s central position within the Solar System. Consequently, the concept of geocentrism — the belief that everything revolves around the Earth, began to gradually fall away.\r\n\r\n\r\nFollowing this, the work of Danish astronomer Tycho Brahe and his assistant Johannes Kepler (16th–17th centuries) further advanced our understanding of planetary motion. Brahe, thanks to highly precise observational instruments for his time (without using a telescope), managed to measure the positions of celestial bodies with unprecedented accuracy. Using these observations, Kepler formulated his famous laws of planetary motion, establishing that planets orbit the Sun in elliptical paths rather than circular ones. These discoveries definitively confirmed the validity of Copernicus\'s heliocentric model.\r\n\r\n\r\n\r\nIn the 17th century, Galileo and Kepler\'s discoveries were given a crucial theoretical extension thanks to Isaac Newton (1642–1727). By formulating his law of universal gravitation, Newton demonstrated that the force holding the Moon in orbit around Earth is the same one keeping us firmly on the ground: every body exerts an attraction on others, proportional to its mass and inversely proportional to distance. This unifying theory laid the foundations of celestial mechanics, enabling precise calculations and predictions of planetary movements, comets, and other celestial bodies.\r\nLater, during the 18th and 19th centuries, the accuracy of observational instruments continued to improve, paving the way for modern observational astronomy. Astronomers discovered new planets (such as Uranus in 1781) and numerous other celestial objects (asteroids, nebulae, distant galaxies…), revealed by the constant progress of telescopes. The scientific mindset of the era also encouraged the development of spectroscopy, enabling researchers to determine the chemical composition of stars from the light they emit.\r\n\r\n\r\nStarting in the 20th century, humanity reached another significant milestone by shifting from observation to space exploration. Pioneers such as Konstantin Tsiolkovsky, Robert Goddard, and Hermann Oberth laid the groundwork for modern rocketry. The first space missions emerged in the 1950s and 1960s, with symbolic achievements including Sputnik 1 (1957, first artificial satellite in orbit), Yuri Gagarin’s flight (1961, first human in space), and humanity’s first steps on the Moon during the Apollo 11 mission (1969).\r\nToday, astronomical research and space exploration continue pushing the boundaries of our knowledge, whether through studying Mars, observing exoplanets, or detecting gravitational waves. One thing is certain: in space sciences, there will always be something new to discover...', '2025-03-18', '67e7cf7794df5.jpg'),
+(3, 'Key Moments', 'The Foundations of Rocket Science (1920s–1940s)\r\n Long before major space programs took shape, a handful of pioneers laid the groundwork for rocket propulsion. In Russia, Konstantin Tsiolkovsky envisioned multi-stage rockets and formulated key principles of space navigation as early as the beginning of the 20th century. In the United States, Robert Goddard tested liquid-fueled rockets, earning him the unofficial title of “father of modern rocketry.” In Europe, Hermann Oberth popularized the concept of space travel and inspired numerous researchers.\r\n\r\nThe First Artificial Satellite: Sputnik (1957)\r\n On October 4, 1957, the USSR stunned the world by launching Sputnik 1, the first artificial satellite in history. It was a massive international shock: the United States, until then confident in its technological lead, suddenly realized it was behind and reacted by funding large-scale research programs. Scientifically speaking, Sputnik merely transmitted simple “beeps” from orbit, but it proved that an object could be placed around Earth. This Soviet achievement marked the start of the famous “space race” and led, among other things, to the creation of NASA.\r\n\r\nThe First Manned Flights\r\n Following Sputnik, the next step was sending living beings into space. In 1957, the Soviet dog Laika became the first living creature to orbit Earth aboard Sputnik 2, raising ethical questions in the process. Then, in 1961, Yuri Gagarin became the first human to travel to space, captivating the entire world. In 1963, Valentina Tereshkova showed that women could also rise to the challenge, becoming the first woman to complete an orbital flight. These missions helped us understand how the human body reacts to gravity, radiation, and isolation.\r\n\r\nConquering the Moon (Apollo Program, 1961–1972)\r\n In 1961, U.S. President John F. Kennedy declared his intention to send a man to the Moon and bring him back safely. This project evolved into the Apollo program, which involved massive human and financial resources. At first, missions like Ranger and Surveyor mapped the Moon, while the USSR sent its Luna probes. In 1968, Apollo 8 became the first manned mission to orbit the Moon, capturing the famous “Earthrise” photo that highlights Earth’s fragility in the vastness of space. The major triumph came in 1969 with Apollo 11, when Neil Armstrong and Buzz Aldrin walked on the lunar surface, watched live by millions. Despite its high cost, Apollo yielded a huge amount of data, from lunar rock samples to a better understanding of our satellite.\r\n\r\nThe Space Shuttle Programs\r\n After the Moon landings, the United States launched the Space Shuttle program to make flights more “regular” by reusing part of the spacecraft. Introduced in 1981 and retired in 2011, the shuttle deployed satellites into orbit, serviced the Hubble Telescope, and helped build the International Space Station. Its history was marked by two tragedies: Challenger (1986) and Columbia (2003), accidents that claimed the lives of their crews. The USSR likewise developed Buran, very similar in concept, which only managed one automated flight in 1988 before being canceled due to lack of funding. These projects reflected a desire to make access to space more frequent and less costly, while promoting research on-site.\r\n\r\nMajor Robotic Interplanetary Missions\r\n Alongside manned flights, robotic exploration pushed the boundaries of our knowledge far beyond Earth orbit. As early as the 1970s, the USSR sent Lunokhod rovers to the Moon, while China launched its Chang’e series in the 2000s and 2010s. Mars soon became a prime target: after the Viking probes in 1976, a series of rovers—including Curiosity and Perseverance—began exploring the Martian surface, hunting for water and possible signs of life. Other probes, such as Voyager 1 and 2 launched in 1977, ventured to the edges of the Solar System (Jupiter, Saturn, Uranus, Neptune) before entering interstellar space. More recently, Cassini-Huygens studied Saturn and its moon Titan, while New Horizons flew by Pluto and continued on toward the Kuiper Belt. Often spread out over years or even decades, these automated missions continually expand our understanding of space and pave the way for more distant manned missions.\r\n\r\nNew Directions in Space Exploration\r\n In the 21st century, space exploration has gained renewed momentum, both crewed and uncrewed. The Artemis program, led by NASA and various international partners, aims to return to the Moon—not just to land there but also to build a base for research, technology development, and ultimately to prepare for a journey to Mars. Meanwhile, robotic missions to the Red Planet continue to examine whether life could ever have existed there, and some plans envision sending human crews in the coming decades. We’re also seeing the rise of private players like SpaceX (which is developing the Falcon 9 and Starship launchers), Blue Origin, and companies in Europe and Asia. All these actors collaborate (and sometimes compete), shaping a new public-private model for space exploration.\r\n\r\nOpening to Commercialization and Space Tourism\r\n Finally, space is gradually becoming more accessible, though so far only to a select few who can afford it. Companies such as Virgin Galactic and Blue Origin offer short suborbital flights, providing a taste of zero gravity. Other, more ambitious projects are planning orbital stays, such as Axiom Space or even SpaceX, which hopes one day to take tourists around the Moon. “Space hotels” in orbit and other private infrastructures are starting to materialize, sparking debates about their profitability and environmental impact. In any case, this emerging market drives technological innovation and strengthens enthusiasm for space, now seen as a new frontier for both economic and scientific development.', '2025-03-11', '67eab01bcb38f.jpg'),
+(4, 'Pioneers', 'Space exploration is, above all, the story of dedicated individuals who dared to break the boundaries of their time. At the start of the 20th century, Konstantin Tsiolkovsky in Russia was already envisioning multi-stage rockets and laying down the basics of space navigation. Meanwhile, in the United States, Robert Goddard persisted in the 1920s with tests on liquid-fuel rockets, even though few believed it would ever be possible to leave Earth’s atmosphere.\r\n\r\nMajor achievements came a bit later, thanks to talented engineers. Sergey Korolev, nicknamed the “Chief Designer,” oversaw the Soviet Union’s first big successes: Sputnik, Yuri Gagarin’s historic flight, and Valentina Tereshkova’s mission (she was the first woman in space). On the other side, Wernher von Braun, who had worked on the V2 rockets in Germany, joined NASA and designed the Saturn V rockets that took the Apollo astronauts to the Moon.\r\n\r\nThere were also many lesser-known figures, like Katherine Johnson, Dorothy Vaughan, and Mary Jackson, African American mathematicians and engineers whose calculations were crucial for NASA. Later on, Mae Jemison became the first Black American woman to travel to space, further opening the door to diversity. Another example is Anousheh Ansari, the first space tourist of Iranian origin, who stayed on the International Space Station in 2006.\r\n\r\nIn the midst of all this, official agencies organize and fund missions. NASA rose to fame with Apollo and the space shuttle, while Roscosmos carried on the Soviet legacy and handled crewed launches from Baikonur. In Europe, the ESA brought several countries together to launch the Ariane rocket and send probes to Mars. India (ISRO), Japan (JAXA), and China (CNSA) also proved they could aim high, with lunar and Martian probes and even space station programs.\r\n\r\nMore recently, private players have entered the scene, such as SpaceX, focusing on reusable rockets and aiming for the Moon and Mars, and Blue Origin, which targets suborbital flights. This heralds a new market built around space tourism and many technical innovations.\r\n\r\nUltimately, whether they’re solo researchers, renowned engineers, unsung heroes, large government agencies, or ambitious startups, they’ve all played a part in this grand adventure. Some had their heads in the clouds, others sought recognition, but they all shared the same drive: to push the limits of what’s possible and deepen our understanding of the universe around us.', '2025-03-04', '67e7bf1b75aab.jpg'),
+(5, 'Economic & Industrial Benefits', 'Space exploration isn’t just about adventure or pure science: it also has a direct impact on the economy and industry. First of all, it’s important to note that space missions require highly specialized technologies, capable of withstanding extreme conditions or operating on limited power. This need for miniaturization and reliability has given rise to numerous innovations that are now part of everyday life, such as ultra-light cameras or water purification devices.\r\n\r\nNext, there’s a direct effect on jobs and industrial development. Major space projects—like launching satellites or building new rockets—call on engineers, IT specialists, materials experts, and robotics professionals. All these skills energize the broader economic network. The companies involved gain expertise, become more competitive, and can then offer their services in other fields.\r\n\r\nOn the market side, we’re seeing the emergence of satellite constellations for high-speed internet, telecommunications, or the Internet of Things, as well as Earth observation (for mapping, resource detection, weather forecasting, or monitoring agricultural crops). All these services create value and address practical needs, such as connecting remote areas or tracking crop conditions.\r\n\r\nSpace exploration also boosts the international standing of the countries that invest in it. Mastering such complex technologies brings significant prestige, attracts scientific talent, and can even strengthen diplomacy. Moreover, it drives research and education: universities and labs are encouraged to train high-level experts, whose expertise then benefits the entire industry.\r\n\r\nMore broadly, the pursuit of solutions to reduce costs or improve reliability in space continually pushes innovation forward. Researchers look for new ways to generate power, manage data, or manufacture more durable components. These breakthroughs often find applications in other fields, such as energy transition, logistics, or even medicine.\r\n\r\nFinally, we shouldn’t forget about prospects like space tourism, which is already drawing investors and could become a real market, or the mining of lunar and asteroid resources, a dream for some entrepreneurs. Although they raise many questions, these ambitions show just how much space can become a true source of economic and industrial growth.', '2025-02-11', '67e7c00bf3fce.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `comment`
+--
+
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE IF NOT EXISTS `comment` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `actuality_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_9474526CB84BD854` (`actuality_id`),
+  KEY `IDX_9474526CA76ED395` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `comment`
+--
+
+INSERT INTO `comment` (`id`, `actuality_id`, `user_id`, `content`, `created_at`) VALUES
+(1, 1, 3, 'Such a great article !', '2025-04-07'),
+(2, 1, 3, 'test 2', '2025-04-07'),
+(3, 1, 4, 'kiookk', '2025-04-08');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `doctrine_migration_versions`
+--
+
+DROP TABLE IF EXISTS `doctrine_migration_versions`;
+CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
+  `version` varchar(191) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `executed_at` datetime DEFAULT NULL,
+  `execution_time` int DEFAULT NULL,
+  PRIMARY KEY (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+
+--
+-- Déchargement des données de la table `doctrine_migration_versions`
+--
+
+INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
+('DoctrineMigrations\\Version20250303145524', '2025-03-03 14:55:29', 182),
+('DoctrineMigrations\\Version20250304103024', '2025-03-04 10:30:38', 158),
+('DoctrineMigrations\\Version20250306145823', '2025-03-06 14:58:36', 117),
+('DoctrineMigrations\\Version20250317131730', '2025-03-17 13:17:49', 74),
+('DoctrineMigrations\\Version20250324151220', '2025-03-24 15:13:12', 104),
+('DoctrineMigrations\\Version20250324152119', '2025-03-24 15:21:37', 40),
+('DoctrineMigrations\\Version20250331115241', '2025-03-31 11:52:50', 106),
+('DoctrineMigrations\\Version20250331150457', '2025-03-31 15:05:03', 122),
+('DoctrineMigrations\\Version20250331175142', '2025-03-31 17:51:51', 78),
+('DoctrineMigrations\\Version20250404195230', '2025-04-07 08:58:07', 221),
+('DoctrineMigrations\\Version20250407085757', '2025-04-07 10:11:29', 333),
+('DoctrineMigrations\\Version20250407141605', '2025-04-07 14:16:12', 38);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `favorite`
+--
+
+DROP TABLE IF EXISTS `favorite`;
+CREATE TABLE IF NOT EXISTS `favorite` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `actuality_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_68C58ED9A76ED395` (`user_id`),
+  KEY `IDX_68C58ED9B84BD854` (`actuality_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `favorite`
+--
+
+INSERT INTO `favorite` (`id`, `user_id`, `actuality_id`) VALUES
+(3, 3, 3),
+(5, 3, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `future_mission`
+--
+
+DROP TABLE IF EXISTS `future_mission`;
+CREATE TABLE IF NOT EXISTS `future_mission` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `launch_date` date NOT NULL,
+  `agency` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image_filename` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `future_mission`
+--
+
+INSERT INTO `future_mission` (`id`, `title`, `description`, `launch_date`, `agency`, `image_filename`) VALUES
+(1, 'Artemis III', 'Artemis III is one of NASA’s most ambitious missions under the Artemis program, aiming to return humans to the lunar surface for the first time since the Apollo era. This mission is not only set to mark a major milestone in space exploration but also symbolizes the global effort to expand humanity’s reach beyond Earth.\r\n\r\nScheduled for the mid-2020s, Artemis III is designed to carry astronauts aboard the Orion spacecraft. The mission’s primary goal is to land American astronauts on the Moon’s South Pole region—a destination chosen for its scientific and exploratory promise. The lunar South Pole harbors permanently shadowed craters that are believed to contain water ice, a vital resource for both scientific research and potential future exploration endeavors. Water ice can be split into hydrogen and oxygen, providing the necessary components for rocket fuel and breathable air, thereby paving the way for sustainable lunar habitation.\r\n\r\nThe mission takes advantage of NASA’s powerful Space Launch System (SLS), a next-generation rocket engineered to support deep space missions. SLS is one of the most critical pieces of hardware for Artemis III, as it is capable of propelling massive payloads and crews into space. Once in space, the Orion spacecraft will separate from SLS and travel towards the Moon. Orion is built to safely transport the crew across vast distances, provide life support, and support complex mission operations during the lunar voyage.\r\n\r\nA unique aspect of Artemis III is its planned crew composition. NASA has committed to landing the first woman and the first person of color on the Moon—a historic step towards broadening diversity within the realm of space exploration. Beyond the symbolic significance, this strategic decision reinforces the commitment to inclusivity and ensures that future space exploration benefits from a diverse set of perspectives and experiences.\r\n\r\nWhile NASA leads the Artemis program, they have partnered with several commercial entities to support the mission’s many facets. For example, SpaceX has been selected as the provider of the Human Landing System (HLS), tasked with transporting astronauts from lunar orbit down to the lunar surface and back. This collaboration between a government agency and private companies is part of a broader strategy to foster innovation, reduce costs, and accelerate the pace of space exploration.\r\n\r\nIn conclusion, Artemis III stands as a pioneering venture that combines cutting-edge technology, diverse global partnerships, and a vision of sustainable space exploration. By leveraging the powerful capabilities of SLS and the Orion spacecraft, along with the support of commercial partners such as SpaceX, NASA is preparing to usher in a new era on the Moon—one that promises to expand our scientific horizons and inspire generations to come.', '2025-01-01', 'NASA', '67f92e27555bd.png'),
+(2, 'JUICE (Jupiter Icy Moons Explorer)', 'JUICE: Exploring the Icy Moons of Jupiter\r\n\r\nThe JUpiter ICy Moons Explorer, known as JUICE, is a groundbreaking space mission led by the European Space Agency (ESA). Launched on April 14, 2023, aboard an Ariane 5 rocket, JUICE is set to embark on an ambitious journey to the Jovian system, with a primary focus on Jupiter’s three largest icy moons: Ganymede, Callisto, and Europa. These moons are of immense scientific interest because they are believed to harbor subsurface oceans, making them potential habitats for extraterrestrial life.\r\n\r\nJUICE’s voyage is long and complex. It will take over eight years to reach Jupiter, arriving in July 2031 after performing multiple gravity assists from Earth, the Moon, and Venus. This extended trajectory allows the spacecraft to build up the speed necessary to reach its distant destination, while also testing advanced navigation and propulsion techniques.\r\n\r\nOnce in the Jovian system, JUICE will spend at least three and a half years studying the planet and its environment. However, the true highlight of the mission will be its close flybys of Europa, Callisto, and especially Ganymede—the largest moon in the solar system and the only one known to have a magnetic field. These moons are covered with thick layers of ice, beneath which scientists suspect vast oceans of liquid water exist.\r\n\r\nJUICE is equipped with 10 state-of-the-art instruments, including radar to probe beneath the surface of the ice, spectrometers to analyze surface and atmospheric composition, and magnetometers to study the moons’ internal structures and magnetic environments. These tools will help scientists better understand the geology, chemistry, and potential habitability of these celestial bodies.\r\n\r\nOne of JUICE’s most exciting goals is to determine whether these moons could support microbial life. While JUICE will not be able to drill through the ice, it can gather enough data to inform future missions—possibly involving landers or subsurface probes.\r\n\r\nThe mission will conclude with JUICE becoming the first spacecraft in history to orbit a moon other than Earth’s: Ganymede. This final phase will offer unparalleled insights into the moon’s magnetic field, internal ocean, and surface features.\r\n\r\nIn summary, JUICE represents a monumental step forward in the exploration of our solar system. By studying Jupiter’s icy moons in unprecedented detail, ESA hopes to unlock secrets about planetary formation, habitability, and the potential for life beyond Earth.', '2023-04-14', 'ESA', '67f92f96ed947.png'),
+(3, 'Chang’e 6', 'Chang’e 6: China’s Mission to Retrieve Lunar Samples from the Far Side of the Moon\r\n\r\nChang’e 6 is an ambitious lunar mission developed by the China National Space Administration (CNSA). As part of China’s growing Chang’e lunar exploration program, Chang’e 6 is designed to achieve a groundbreaking feat: collect and return samples from the far side of the Moon—a region no country has ever brought material back from before.\r\n\r\nBuilding upon the success of Chang’e 5, which retrieved samples from the near side of the Moon in 2020, Chang’e 6 represents the next step in China\'s scientific and technological advancement in space. The far side of the Moon, often inaccurately referred to as the \"dark side,\" is constantly facing away from Earth and has a very different geological composition compared to the near side. Studying this unexplored terrain could offer unprecedented insights into the Moon’s formation, evolution, and the early history of the solar system.\r\n\r\nChang’e 6 consists of four components: an orbiter, a lander, an ascender, and a return capsule. The lander is tasked with descending to the lunar surface and drilling or scooping samples from a region likely within the South Pole–Aitken Basin, one of the largest and oldest impact structures in the solar system. Once collected, the samples will be loaded into the ascender, which will launch back into lunar orbit and dock with the orbiter. From there, the return capsule will be sent back to Earth, carrying the precious material for detailed laboratory analysis.\r\n\r\nGiven the far side\'s lack of direct communication with Earth, the mission also relies on the Queqiao-2 relay satellite, launched ahead of time to maintain constant contact between the spacecraft and mission control. This adds a layer of complexity and innovation to the mission, showcasing China’s expanding capabilities in deep space operations.\r\n\r\nChang’e 6 is not just a scientific mission—it’s a symbol of China’s commitment to becoming a major space power. The data and samples retrieved may significantly advance our understanding of planetary science and even aid in planning future crewed missions or permanent lunar bases.', '2024-05-03', 'CNSA', '67f9309309779.png'),
+(4, 'Mars Sample Return', 'Mars Sample Return: Bringing Pieces of the Red Planet Back to Earth\r\n\r\nThe Mars Sample Return (MSR) mission is one of the most complex and ambitious interplanetary endeavors ever planned. Led by NASA in collaboration with the European Space Agency (ESA), the mission aims to bring Martian rock and soil samples back to Earth for the first time in human history. If successful, it would mark a monumental step forward in our quest to understand the history of Mars and the possibility of past life beyond Earth.\r\n\r\nThe mission builds on the work of NASA\'s Perseverance rover, which has been exploring Jezero Crater since 2021. Perseverance is collecting and caching rock samples in sealed tubes, carefully chosen from ancient riverbeds and deltas that may hold biosignatures or clues to microbial life. These samples are stored either on the rover itself or dropped at specific locations on the Martian surface for later pickup.\r\n\r\nThe Mars Sample Return campaign involves a series of coordinated missions. A Sample Retrieval Lander, built by NASA, is expected to deliver a fetch rover (developed by ESA) to Mars. This rover will retrieve the sealed tubes and transfer them to the lander, which will then load them into the Mars Ascent Vehicle—a small rocket designed to launch the sample container into Martian orbit.\r\n\r\nOnce in orbit, the container will be intercepted by the Earth Return Orbiter, developed by ESA. After securing the samples, the orbiter will begin its journey back to Earth, eventually releasing the container in a protective capsule that will land safely on Earth, likely in the Utah desert.\r\n\r\nAnalyzing Martian samples in Earth-based laboratories will allow scientists to perform detailed studies using tools far too large and sensitive to send to Mars. These studies could confirm whether ancient Mars once hosted life, better understand the planet’s climate history, and even improve planning for future crewed missions.', '2028-01-01', 'ESA & NASA', '67f9319a4a303.png');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `messenger_messages`
+--
+
+DROP TABLE IF EXISTS `messenger_messages`;
+CREATE TABLE IF NOT EXISTS `messenger_messages` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `body` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `headers` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue_name` varchar(190) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
+  `available_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
+  `delivered_at` datetime DEFAULT NULL COMMENT '(DC2Type:datetime_immutable)',
+  PRIMARY KEY (`id`),
+  KEY `IDX_75EA56E0FB7336F0` (`queue_name`),
+  KEY `IDX_75EA56E0E3BD61CE` (`available_at`),
+  KEY `IDX_75EA56E016BA31DB` (`delivered_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `planet`
+--
+
+DROP TABLE IF EXISTS `planet`;
+CREATE TABLE IF NOT EXISTS `planet` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `distance_from_sun` double NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `picture` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_8D93D6495126AC48` (`mail`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `mail`, `password`, `role`, `picture`) VALUES
+(3, 'User', 'Simpleuser@gmail.com', '$2y$13$0ee20MgiN7GEgUl6Bh99Nu4fjqcSlyxE/Yr4mXTsE1sW3RDA8U.Ly', 'ROLE_USER', 'user_3.webp'),
+(4, 'Santa', 'Santa@gmail.com', '$2y$13$XTVTojR7uhK6paUvwQchkOiPyCcTu5niQeC2hlI6MF0leLYL.Fwge', 'ROLE_ADMIN', 'user_4.webp'),
+(12, 'testtest', 'test@test.fr', '$2y$13$Vi.tE5H8O/iO39SuStpVb..Sdype5OQhQeD2ryPGQ3iIzTxItnEtu', 'ROLE_USER', NULL),
+(14, 'TheTestor', 'test@gmail.com', '$2y$13$qT/BLw.qTfqNtjRZKJ/lv.ozwZyPuSwkXa7Mjkc7/8ZG0S5JtQXym', 'ROLE_USER', NULL);
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `comment`
+--
+ALTER TABLE `comment`
+  ADD CONSTRAINT `FK_9474526CA76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `FK_9474526CB84BD854` FOREIGN KEY (`actuality_id`) REFERENCES `actuality` (`id`);
+
+--
+-- Contraintes pour la table `favorite`
+--
+ALTER TABLE `favorite`
+  ADD CONSTRAINT `FK_68C58ED9A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `FK_68C58ED9B84BD854` FOREIGN KEY (`actuality_id`) REFERENCES `actuality` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

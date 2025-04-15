@@ -9,7 +9,7 @@
     <changefreq>monthly</changefreq>
   </url>
 
-    Page de registration
+    <!-- Page de registration -->
   <url>
     <loc>https://cosmoscop-production.up.railway.app/registration</loc>
     <priority>0.7</priority>
@@ -17,7 +17,7 @@
   </url>
  
 
-    Page de login
+    <!-- Page de login -->
   <url>
     <loc>https://cosmoscop-production.up.railway.app/login</loc>
     <priority>0.7</priority>
