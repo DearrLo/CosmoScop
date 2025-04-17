@@ -12,7 +12,7 @@ final class MainController extends AbstractController
     #[Route('/', name: 'home')]
     public function index(ActualityRepository $actualityRepository): Response
     {
-        // On récupère toutes les actua depuis la bdd
+        // On récupère toutes les actu depuis la bdd
         $actualities = $actualityRepository->findAll();
     
         // On met tout ça dans la vue d’accueil

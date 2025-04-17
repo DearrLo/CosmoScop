@@ -62,7 +62,7 @@ header {
 
 .container {
   max-width: 65rem;
-  padding: 0rem;
+  padding: 0 1rem;
   margin: 0 auto;
   display: flex;
   position: relative;
@@ -81,6 +81,12 @@ header {
   font-size: 1.8rem;
   color: var(--clr-light);
   margin-left: -70px;
+}
+
+@media (max-width: 920px) {
+  .logo {
+    margin-left: 0;
+  }
 }
 
 .logo:hover {
@@ -234,6 +240,12 @@ header {
   opacity: 0;
   pointer-events: none;
   transition: 0.5s;
+}
+
+@media (max-width: 920px) {
+  .dropdown {
+    width: 100%; 
+  }
 }
 
 .dropdown ul {
@@ -422,7 +434,7 @@ header {
 
   .nav-link {
     width: 100%;
-    opacity: 0;
+    opacity: 1;
     transform: translateY(15px);
   }
 
@@ -435,19 +447,6 @@ header {
   .nav-link:hover > a {
     background-color: var(--clr-nav-hover);
     color: var(--clr-btn);
-  }
-
-  .dropdown {
-    position: initial;
-    top: initial;
-    left: initial;
-    transform: initial;
-    opacity: 1;
-    pointer-events: auto;
-    width: 100%;
-    padding: 0;
-    background-color: var(--clr-dropdown);
-    display: none;
   }
 
   .nav-link:hover > .dropdown,
@@ -608,8 +607,8 @@ header {
 }
 
 .article-show-container {
-  width: 80%;
-  max-width: 800px;
+  width: 90%;
+  max-width: 1000px;
   margin: 2rem auto;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
@@ -620,6 +619,7 @@ header {
 .article-show-container h1 {
   margin-bottom: 1rem;
   font-size: 2rem;
+  text-transform: uppercase;
 }
 
 .article-show-container .publication-date {
@@ -629,18 +629,12 @@ header {
 }
 
 .article-show-container .article-content {
-  line-height: 1.6;
+  line-height: 1.5;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-}
-
-.article-content {
+  gap: 1rem;
   text-align: justify;
   white-space: pre-line;
-}
-
-.article-content p {
   margin-bottom: 1rem;
 }
 
@@ -752,6 +746,10 @@ header {
   min-width: 300px;
 }
 
+.dashboard-top {
+  margin-top: 130px;
+}
+
 .dashboard-right {
   display: flex;
   flex-direction: column;
@@ -774,6 +772,7 @@ header {
 .username {
   font-size: 1.3rem;
   margin: 10px 0;
+  text-transform: uppercase;
 }
 
 .user-info-section {
@@ -795,6 +794,13 @@ header {
   margin: 0 auto 60px;
   color: #fff6ff;
   font-size: 1.05rem;
+}
+
+.user-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .favorites-table {

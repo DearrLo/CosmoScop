@@ -29,6 +29,15 @@ final class ActualityController extends AbstractController
         ]);
     }
 
+    // Page alternative d'affichage des actualités (liste personnalisée)
+    #[Route('/list', name: 'app_actuality_list', methods: ['GET'])]
+    public function list(ActualityRepository $actualityRepository): Response
+    {
+        return $this->render('actuality/list.html.twig', [
+            'actualities' => $actualityRepository->findAll(),
+        ]);
+    }
+
     // Ce form() sert à créer ou edit une actu, selon si on reçoit un objet Actuality ou non
     #[Route('/new', name: 'app_actuality_new', methods: ['GET', 'POST'])]
     #[Route('/{id}/edit', name: 'app_actuality_edit', methods: ['GET', 'POST'])]

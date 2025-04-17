@@ -1,84 +1,83 @@
-	<header role="banner">
-		<div class="container">
-			<input type="checkbox" name="check" id="check" aria-label="Toggle menu">
+<header role="banner">
+	<div class="container">
+		<input type="checkbox" name="check" id="check" aria-label="Toggle menu">
 
-			<div class="logo-container">
-				<a href="{{ path('home') }}" class="logo" aria-label="Homepage">
-					<h3>COSMO<span>SCOP</span>
-					</h3>
-				</a>
-			</div>
-
-			<div class="hamburger-menu-container">
-				<div class="hamburger-menu" aria-hidden="true">
-					<div></div>
-				</div>
-			</div>
-
-			<nav class="nav-btn" role="navigation" aria-label="Main navigation">
-				<div class="nav-links">
-					<ul>
-						<li class="nav-link">
-							<a href="{{ path('app_article_index') }}">Space Prelude</a>
-							<ul class="dropdown">
-								<li class="dropdown-link">
-									<a href="{{ path('app_article_topic', { topic: 'introduction' }) }}">Introduction</a>
-								</li>
-								<li class="dropdown-link">
-									<a href="{{ path('app_article_topic', { topic: 'key-moments' }) }}">Key Moments in Space Discovery</a>
-								</li>
-								<li class="dropdown-link">
-									<a href="{{ path('app_article_topic', { topic: 'pioneers' }) }}">Pioneers of Space Exploration</a>
-								</li>
-								<li class="dropdown-link">
-									<a href="{{ path('app_article_topic', { topic: 'economic-benefits' }) }}">Economic & Industrial Benefits</a>
-								</li>
-							</ul>
-						</li>
-
-						<li class="nav-link">
-							<a href="{{ path('app_future_mission') }}">Future Missions</a>
-							<ul class="dropdown">
-								<li class="dropdown-link">
-									<a href="{{ path('app_future_mission_slug', { slug: 'artemis-iii' }) }}">Artemis III</a>
-								</li>
-								<li class="dropdown-link">
-									<a href="{{ path('app_future_mission_slug', { slug: 'juice' }) }}">JUICE</a>
-								</li>
-								<li class="dropdown-link">
-									<a href="{{ path('app_future_mission_slug', { slug: 'change-6' }) }}">Chang’e 6</a>
-								</li>
-								<li class="dropdown-link">
-									<a href="{{ path('app_future_mission_slug', { slug: 'mars-sample-return' }) }}">Mars Sample Return</a>
-								</li>
-							</ul>
-
-						</li>
-
-						<li class="nav-link">
-							<a href="{{ path('about_us') }}">About us</a>
-						</li>
-					</ul>
-				</div>
-
-				<div class="log-sign">
-					{% if app.user %}
-						<div class="user-menu">
-							<a href="{{ path('app_user_dashboard') }}" class="user-icon" aria-label="User dashboard">
-								<i class="fas fa-user" aria-hidden="true"></i>
-							</a>
-							{% if is_granted('ROLE_ADMIN') %}
-								<a href="{{ path('app_admin_dashboard') }}" class="admin-icon" aria-label="Admin dashboard">
-									<i class="fas fa-screwdriver-wrench" aria-hidden="true"></i>
-								</a>
-							{% endif %}
-							<a href="{{ path('app_logout') }}" class="btn solid">Sign out</a>
-						</div>
-					{% else %}
-						<a href="{{ path('app_login') }}" class="btn transparent">Log in</a>
-						<a href="{{ path('app_register') }}" class="btn solid">Sign up</a>
-					{% endif %}
-				</div>
-			</nav>
+		<div class="logo-container">
+			<a href="{{ path('home') }}" class="logo" aria-label="Homepage">
+				<h3>COSMO<span>SCOP</span>
+				</h3>
+			</a>
 		</div>
-	</header>
+
+		<div class="hamburger-menu-container">
+			<div class="hamburger-menu" aria-hidden="true">
+				<div></div>
+			</div>
+		</div>
+
+		<nav class="nav-btn" role="navigation" aria-label="Main navigation">
+			<div class="nav-links">
+				<ul>
+					<li class="nav-link">
+						<a href="#" class="dropdown-toggle">Space Prelude</a>
+						<ul class="dropdown">
+							<li class="dropdown-link">
+								<a href="{{ path('app_article_topic', { topic: 'introduction' }) }}">Introduction</a>
+							</li>
+							<li class="dropdown-link">
+								<a href="{{ path('app_article_topic', { topic: 'key-moments' }) }}">Key Moments in Space Discovery</a>
+							</li>
+							<li class="dropdown-link">
+								<a href="{{ path('app_article_topic', { topic: 'pioneers' }) }}">Pioneers of Space Exploration</a>
+							</li>
+							<li class="dropdown-link">
+								<a href="{{ path('app_article_topic', { topic: 'economic-benefits' }) }}">Economic & Industrial Benefits</a>
+							</li>
+						</ul>
+					</li>
+
+					<li class="nav-link">
+						<a href="#" class="dropdown-toggle">Future Missions</a>
+						<ul class="dropdown">
+							<li class="dropdown-link">
+								<a href="{{ path('app_future_mission_slug', { slug: 'artemis-iii' }) }}">Artemis III</a>
+							</li>
+							<li class="dropdown-link">
+								<a href="{{ path('app_future_mission_slug', { slug: 'juice' }) }}">JUICE</a>
+							</li>
+							<li class="dropdown-link">
+								<a href="{{ path('app_future_mission_slug', { slug: 'change-6' }) }}">Chang’e 6</a>
+							</li>
+							<li class="dropdown-link">
+								<a href="{{ path('app_future_mission_slug', { slug: 'mars-sample-return' }) }}">Mars Sample Return</a>
+							</li>
+						</ul>
+					</li>
+
+					<li class="nav-link">
+						<a href="{{ path('about_us') }}">About us</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="log-sign">
+				{% if app.user %}
+					<div class="user-menu">
+						<a href="{{ path('app_user_dashboard') }}" class="user-icon" aria-label="User dashboard">
+							<i class="fas fa-user" aria-hidden="true"></i>
+						</a>
+						{% if is_granted('ROLE_ADMIN') %}
+							<a href="{{ path('app_admin_dashboard') }}" class="admin-icon" aria-label="Admin dashboard">
+								<i class="fas fa-screwdriver-wrench" aria-hidden="true"></i>
+							</a>
+						{% endif %}
+						<a href="{{ path('app_logout') }}" class="btn solid">Sign out</a>
+					</div>
+				{% else %}
+					<a href="{{ path('app_login') }}" class="btn transparent">Log in</a>
+					<a href="{{ path('app_register') }}" class="btn solid">Sign up</a>
+				{% endif %}
+			</div>
+		</nav>
+	</div>
+</header>
