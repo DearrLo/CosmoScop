@@ -202,6 +202,7 @@ header {
 
 .nav-links > ul {
   display: flex;
+  margin-top: 12px;
   justify-content: center;
   align-items: center;
 }
@@ -370,11 +371,7 @@ header {
 .user-icon {
   color: white;
   text-decoration: none;
-  margin-top: 15px;
-}
-
-.user-icon i {
-  color: inherit;
+  margin-top: 12px;
 }
 
 @keyframes animation {
@@ -407,11 +404,12 @@ header {
     background-color: var(--clr-btn);
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start; /* pour que les menus soient bien empilés vers le haut */
     overflow-x: hidden;
     overflow-y: auto;
     transform: translateX(100%);
     transition: 0.65s;
+    padding-top: 1rem; /* petit espace au-dessus */
   }
 
   #check:checked ~ .nav-btn {
@@ -436,6 +434,7 @@ header {
     width: 100%;
     opacity: 1;
     transform: translateY(15px);
+    margin-bottom: 2rem; 
   }
 
   .nav-link > a {
@@ -449,11 +448,21 @@ header {
     color: var(--clr-btn);
   }
 
+  .dropdown {
+    position: static;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+    display: none;
+    margin-top: 1rem;
+  }
+
   .nav-link:hover > .dropdown,
   .dropdown-link:hover > .dropdown {
     display: block;
   }
 }
+
 
 /* Partie Footer */
 .footer {

@@ -45,7 +45,6 @@ class UserDashboardController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush(); // on enregistre le nouvel email
-            $this->addFlash('success', 'Mail updated.');
             return $this->redirectToRoute('app_user_dashboard');
         }
 
@@ -79,8 +78,6 @@ class UserDashboardController extends AbstractController
                 $hashedPassword = $passwordHasher->hashPassword($user, $newPassword);
                 $user->setPassword($hashedPassword);
                 $em->flush();
-
-                $this->addFlash('success', 'Password successfully updated.');
                 return $this->redirectToRoute('app_user_dashboard');
             }
         }

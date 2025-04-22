@@ -17,8 +17,7 @@
 
             {% if is_granted('ROLE_USER') %}
                 <form method="post"
-                      action="{{ path('app_favorite_toggle', { id: actuality.id }) }}"
-                      style="display: inline;">
+                      action="{{ path('app_favorite_toggle', { id: actuality.id }) }}">
                     <button type="submit"
                             class="favorite-btn"
                             title="Add to favorites"
