@@ -79,8 +79,8 @@ final class ActualityController extends AbstractController
             $entityManager->persist($actuality);
             $entityManager->flush();
 
-            // Ensuite on redirige vers la liste des actus
-            return $this->redirectToRoute('app_actuality_index');
+            // Ensuite on redirige vers l'admin dashboard
+            return $this->redirectToRoute('app_admin_dashboard');
         }
 
         // SINON, on affiche juste le formulaire (création ou édition)
@@ -147,6 +147,6 @@ final class ActualityController extends AbstractController
         }
 
         // Après suppression (ou si CSRF pas bon), on retourne sur la liste
-        return $this->redirectToRoute('app_actuality_index');
+        return $this->redirectToRoute('app_admin_dashboard');
     }
 }
